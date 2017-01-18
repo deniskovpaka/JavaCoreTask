@@ -1,4 +1,4 @@
-package infrastructure;
+package model;
 
 /**
  * KindOfGoods represents a goods (cargo) type.

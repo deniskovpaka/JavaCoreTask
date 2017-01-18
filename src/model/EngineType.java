@@ -1,4 +1,4 @@
-package infrastructure;
+package model;
 
 /**
  * EngineType represents a concrete train engine.

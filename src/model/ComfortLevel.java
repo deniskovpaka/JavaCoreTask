@@ -1,4 +1,4 @@
-package infrastructure;
+package model;
 
 /**
  * ComfortLevel represents comfort level of a carriage.

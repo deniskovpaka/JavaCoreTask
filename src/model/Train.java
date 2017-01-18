@@ -1,4 +1,4 @@
-package infrastructure;
+package model;
 
 import java.util.ArrayList;
 import java.util.Collections;

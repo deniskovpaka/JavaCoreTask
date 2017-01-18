@@ -1,4 +1,4 @@
-package infrastructure;
+package model;
 
 public class Carrage {
     private ComfortLevel comfortLevel;
