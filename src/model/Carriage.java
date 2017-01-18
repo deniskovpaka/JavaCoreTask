@@ -1,10 +1,10 @@
 package model;
 
-public class Carrage {
+public class Carriage {
     private ComfortLevel comfortLevel;
     private double baggageCapacity;
 
-    public Carrage(ComfortLevel comfortLevel, double baggageCapacity) {
+    public Carriage(ComfortLevel comfortLevel, double baggageCapacity) {
         this.comfortLevel = comfortLevel;
         this.baggageCapacity = baggageCapacity;
     }
@@ -23,7 +23,7 @@ public class Carrage {
 
     @Override
     public String toString() {
-        return "Carrage{" +
+        return "Carriage{" +
                 "comfortLevel=" + comfortLevel +
                 ", baggageCapacity=" + baggageCapacity +
                 '}';
