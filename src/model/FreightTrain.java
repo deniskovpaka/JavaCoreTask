@@ -1,14 +1,14 @@
 package model;
 
 public class FreightTrain extends Train {
-    private KindOfGoods kindOfGoods;
+    private int cargoCost;
 
-    public KindOfGoods getKindOfGoods() {
-        return kindOfGoods;
+    public int getCargoCost() {
+        return cargoCost;
     }
 
-    public void setKindOfGoods(KindOfGoods kindOfGoods) {
-        this.kindOfGoods = kindOfGoods;
+    public void setCargoCost(int cargoCost) {
+        this.cargoCost = cargoCost;
     }
 
     @Override

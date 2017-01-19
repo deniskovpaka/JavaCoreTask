@@ -1,11 +1,11 @@
 package model;
 
-public class Carriage {
+public abstract class Carriage {
     private ComfortLevel comfortLevel;
     private double baggageCapacity;
 
-    public Carriage(ComfortLevel comfortLevel, double baggageCapacity) {
-        this.comfortLevel = comfortLevel;
+    public Carriage(double baggageCapacity) {
+        this.comfortLevel = ComfortLevel.NONE;
         this.baggageCapacity = baggageCapacity;
     }
 

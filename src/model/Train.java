@@ -1,12 +1,11 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public abstract class Train {
+public abstract class Train{
     private List<Carriage> carriages;
     private EngineType engineType;
     final static Logger logger = Logger.getLogger(Train.class.getName()); // TODO it may be better to use log4j
@@ -15,10 +14,9 @@ public abstract class Train {
         this.carriages = new ArrayList<>();
     }
 
-    public List<Carriage> getCarriages() {
-        List<Carriage> copyCarriages = new ArrayList<>(carriages.size());
-        Collections.copy(copyCarriages, carriages);
-        return copyCarriages;
+    public List<Carriage> getCarriagesCopy() {
+        List<Carriage> carriagesCopy = new ArrayList<>(carriages);
+        return carriagesCopy;
     }
 
     public void setCarriages(List<Carriage> carriages) {
@@ -47,4 +45,12 @@ public abstract class Train {
     }
 
     public abstract String getTrainName();
+
+    @Override
+    public String toString() {
+        return "Train{" +
+                "carriages=" + carriages +
+                ", engineType=" + engineType +
+                '}';
+    }
 }
