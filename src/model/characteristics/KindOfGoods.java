@@ -9,5 +9,6 @@ package model.characteristics;
 public enum KindOfGoods {
     LIQUID,
     RIGID,
-    VAPOR;
+    VAPOR,
+    UKNOWN;
 }

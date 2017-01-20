@@ -1,16 +1,23 @@
 package model.train;
 
-import model.train.Train;
-
 public class HaulageTrain extends Train {
-    private double trainPower;
+    private double carriageCost;
+    private boolean onRepair;
 
-    public double getTrainPower() {
-        return trainPower;
+    public boolean isOnRepair() {
+        return onRepair;
     }
 
-    public void setTrainPower(double trainPower) {
-        this.trainPower = trainPower;
+    public void setOnRepair(boolean onRepair) {
+        this.onRepair = onRepair;
+    }
+
+    public double getCarriageCost() {
+        return carriageCost;
+    }
+
+    public void setCarriageCost(double carriageCost) {
+        this.carriageCost = carriageCost;
     }
 
     @Override
