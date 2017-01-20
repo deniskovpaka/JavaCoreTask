@@ -1,4 +1,6 @@
-package model;
+package model.train;
+
+import model.train.Train;
 
 public class HaulageTrain extends Train {
     private double trainPower;

@@ -1,4 +1,4 @@
-package model;
+package model.characteristics;
 
 /**
  * KindOfGoods represents a goods (cargo) type.

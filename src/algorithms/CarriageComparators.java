@@ -1,8 +1,8 @@
 package algorithms;
 
-import model.Carriage;
-import model.ComfortLevel;
-import model.PassengerCarriage;
+import model.carriage.Carriage;
+import model.characteristics.ComfortLevel;
+import model.carriage.PassengerCarriage;
 
 import java.util.Collections;
 import java.util.Comparator;

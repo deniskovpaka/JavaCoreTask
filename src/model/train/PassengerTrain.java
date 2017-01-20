@@ -1,4 +1,4 @@
-package model;
+package model.train;
 
 public class PassengerTrain extends Train {
     private int numberOfAvailableSeats;

@@ -1,4 +1,6 @@
-package model;
+package model.carriage;
+
+import model.characteristics.ComfortLevel;
 
 public class PassengerCarriage extends Carriage {
     private int numberOfPassengers;
@@ -16,8 +18,8 @@ public class PassengerCarriage extends Carriage {
 
     @Override
     public String toString() {
-        return super.toString() + " PassengerCarriage{" +
-                "numberOfPassengers=" + numberOfPassengers +
+        return super.toString() +
+                ", numberOfPassengers=" + numberOfPassengers +
                 '}';
     }
 }

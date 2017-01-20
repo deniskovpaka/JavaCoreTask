@@ -1,4 +1,4 @@
-package model;
+package model.characteristics;
 
 /**
  * ComfortLevel represents comfort level of a carriage.

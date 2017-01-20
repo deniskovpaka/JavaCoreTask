@@ -1,4 +1,4 @@
-package model;
+package model.characteristics;
 
 /**
  * EngineType represents a concrete train engine.

@@ -1,4 +1,4 @@
-package model;
+package model.train;
 
 public class FreightTrain extends Train {
     private int cargoCost;

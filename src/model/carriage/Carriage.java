@@ -1,4 +1,6 @@
-package model;
+package model.carriage;
+
+import model.characteristics.ComfortLevel;
 
 public abstract class Carriage {
     private ComfortLevel comfortLevel;
@@ -25,7 +27,6 @@ public abstract class Carriage {
     public String toString() {
         return "Carriage{" +
                 "comfortLevel=" + comfortLevel +
-                ", baggageCapacity=" + baggageCapacity +
-                '}';
+                ", baggageCapacity=" + baggageCapacity;
     }
 }
