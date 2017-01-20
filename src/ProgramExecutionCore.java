@@ -11,7 +11,6 @@ import model.train.Train;
 public class ProgramExecutionCore {
     public static void main(String[] args) {
         // TODO This execution method will be completely reworked later
-
         Train train = new PassengerTrain();
         train.setEngineType(EngineType.COAL);
         train.addCarrage(new PassengerCarriage(ComfortLevel.COMFORT, 5.0));
@@ -41,5 +40,6 @@ public class ProgramExecutionCore {
         System.out.println("------AFTER3------");
         System.out.println(Calculation.calculate(train.getCarriagesCopy(),
                 new Calculation.BaggageCalculator()));
+        // TODO This execution method will be completely reworked later
     }
 }
