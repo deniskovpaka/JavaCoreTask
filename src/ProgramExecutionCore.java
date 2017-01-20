@@ -11,6 +11,7 @@ import model.train.Train;
 public class ProgramExecutionCore {
     public static void main(String[] args) {
         // TODO This execution method will be completely reworked later
+
         Train train = new PassengerTrain();
         train.setEngineType(EngineType.COAL);
         train.addCarrage(new PassengerCarriage(ComfortLevel.COMFORT, 5.0));
