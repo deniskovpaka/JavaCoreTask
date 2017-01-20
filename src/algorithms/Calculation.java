@@ -15,7 +15,6 @@ public class Calculation {
     }
 
     public static class PassengerCalculator implements Function<PassengerCarriage, Double> {
-
         @Override
         public Double apply(PassengerCarriage passengerCarriage) {
             return (double) passengerCarriage.getNumberOfPassengers();
