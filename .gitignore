@@ -1,5 +1,7 @@
 .idea/*
 out/*
+src/io/output/outputdata/*
+src/io/input/inputdata/*
 *.class
 *.war
 *.jar

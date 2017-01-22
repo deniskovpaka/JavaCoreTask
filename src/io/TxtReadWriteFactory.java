@@ -7,12 +7,12 @@ import io.output.TxtDataSaver;
 
 public class TxtReadWriteFactory implements ReadWriteFactory {
     @Override
-    public DataReader createDateReader() {
-        return new TxtDataReader();
+    public DataReader createDataReader(String inputFileName) {
+        return new TxtDataReader(inputFileName);
     }
 
     @Override
-    public DataSaver createDataSaver() {
-        return new TxtDataSaver();
+    public DataSaver createDataSaver(String outputFileName) {
+        return new TxtDataSaver(outputFileName);
     }
 }

@@ -2,6 +2,9 @@ package io.output;
 
 import model.train.Train;
 
+import java.io.IOException;
+
 public interface DataSaver {
-    void saveDataToFile(Train train);
+    String DATA_SAVER_PATH = "src\\io\\output\\outputdata\\"; // TODO It would be wonderful to set this in Config.file
+    void saveDataToFile(Train train) throws IOException;
 }

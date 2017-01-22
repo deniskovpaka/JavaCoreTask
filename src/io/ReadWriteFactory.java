@@ -4,6 +4,6 @@ import io.input.DataReader;
 import io.output.DataSaver;
 
 public interface ReadWriteFactory {
-    DataReader createDateReader();
-    DataSaver createDataSaver();
+    DataReader createDataReader(String inputFileName);
+    DataSaver createDataSaver(String outputFileName);
 }

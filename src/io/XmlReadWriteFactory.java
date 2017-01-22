@@ -7,12 +7,12 @@ import io.output.XmlDataSaver;
 
 public class XmlReadWriteFactory implements ReadWriteFactory {
     @Override
-    public DataReader createDateReader() {
-        return new XmlDataReader();
+    public DataReader createDataReader(String inputFileName) {
+        return new XmlDataReader(inputFileName);
     }
 
     @Override
-    public DataSaver createDataSaver() {
-        return new XmlDataSaver();
+    public DataSaver createDataSaver(String outputFileName) {
+        return new XmlDataSaver(outputFileName);
     }
 }
