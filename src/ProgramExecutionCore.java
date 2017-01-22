@@ -1,4 +1,5 @@
 import io.input.TxtDataReader;
+import io.input.XmlDataReader;
 import io.output.TxtDataSaver;
 import model.carriage.Carriage;
 import model.carriage.PassengerCarriage;
@@ -45,16 +46,13 @@ public class ProgramExecutionCore {
 //        System.out.println("------AFTER3------");
 //        System.out.println(Calculation.calculate(train.getCarriagesCopy(),
 //                new Calculation.BaggageCalculator()));
-        TxtDataReader reader = new TxtDataReader(DATA_READER_PATH + "PassengerTrain.txt");
-        TxtDataSaver saver = new TxtDataSaver(DATA_SAVER_PATH + "PassengerTrainOut.txt");
-        try {
-            saver.saveDataToFile(train);
-//            String[] str = reader.readInitialParameters();
-//            for (String s : str)
-//                System.out.println(s);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        TxtDataReader reader = new TxtDataReader(DATA_READER_PATH + "PassengerTrain.txt");
+//        TxtDataSaver saver = new TxtDataSaver(DATA_SAVER_PATH + "PassengerTrainOut.txt");
+        XmlDataReader reader = new XmlDataReader(DATA_READER_PATH + "PassengerTrain.xml");
+        //saver.saveDataToFile(train);
+        String[] str = reader.readInitialParameters();
+        for (String s : str)
+            System.out.println(s);
 
         // TODO This execution method will be completely reworked later
     }
