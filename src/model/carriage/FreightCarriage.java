@@ -17,4 +17,10 @@ public class FreightCarriage extends Carriage {
     public void setKindOfGoods(KindOfGoods kindOfGoods) {
         this.kindOfGoods = kindOfGoods;
     }
+
+    @Override
+    public String getCarriagesParameters() {
+        return getBaggageCapacity()
+                + ", " + getKindOfGoods();
+    }
 }

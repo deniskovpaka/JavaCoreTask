@@ -12,14 +12,22 @@ public class PassengerTrain extends Train {
     }
 
     @Override
+    public String toString() {
+        return super.toString() + " PassengerTrain{" +
+                "numberOfAvailableSeats=" + numberOfAvailableSeats +
+                '}';
+    }
+
+    @Override
     public String getTrainName() {
         return "PASSENGER_TRAIN";
     }
 
     @Override
-    public String toString() {
-        return super.toString() + " PassengerTrain{" +
-                "numberOfAvailableSeats=" + numberOfAvailableSeats +
-                '}';
+    public String getTrainParameters() {
+        return getTrainName()
+                + ", " + getEngineType()
+                + ", " + getNumberOfAvailableSeats()
+                + ", " + getCarriagesQuantity();
     }
 }

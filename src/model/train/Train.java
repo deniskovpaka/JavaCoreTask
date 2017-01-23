@@ -47,7 +47,9 @@ public abstract class Train{
                     carriages.size());
     }
 
-    public abstract String getTrainName();
+    public int getCarriagesQuantity() {
+        return carriages.size();
+    }
 
     @Override
     public String toString() {
@@ -56,4 +58,12 @@ public abstract class Train{
                 ", engineType=" + engineType +
                 '}';
     }
+
+    /**
+     * Some specific methods for saver's and viewer's classes.
+     * As the viewer's classes will be used these parameters in
+     * a different ways/modes.
+     */
+    public abstract String getTrainName();
+    public abstract String getTrainParameters();
 }

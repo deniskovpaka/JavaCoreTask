@@ -24,4 +24,13 @@ public class HaulageTrain extends Train {
     public String getTrainName() {
         return "HAULAGE_TRAIN";
     }
+
+    @Override
+    public String getTrainParameters() {
+        return getTrainName()
+                + ", " + getEngineType()
+                + ", " + getCarriageCost()
+                + ", " + isOnRepair()
+                + ", " + getCarriagesQuantity();
+    }
 }

@@ -29,4 +29,11 @@ public abstract class Carriage {
                 "comfortLevel=" + comfortLevel +
                 ", baggageCapacity=" + baggageCapacity;
     }
+
+    /**
+     * Specific method for saver's and viewer's classes.
+     * As the viewer's classes will be used these parameters in
+     * a different ways/modes.
+     */
+    public abstract String getCarriagesParameters();
 }

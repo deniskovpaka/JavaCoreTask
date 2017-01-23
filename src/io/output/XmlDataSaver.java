@@ -1,5 +1,7 @@
 package io.output;
 
+import io.XmlReadWriteFactory;
+import model.carriage.Carriage;
 import model.train.Train;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -7,7 +9,6 @@ import org.w3c.dom.Element;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
@@ -15,9 +16,12 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class XmlDataSaver implements DataSaver {
     private String outputFileName;
+    final static Logger logger = Logger.getLogger(XmlDataSaver.class.getName());
 
     public XmlDataSaver(String outputFileName) {
         this.outputFileName = outputFileName;
@@ -25,33 +29,35 @@ public class XmlDataSaver implements DataSaver {
 
     @Override
     public void saveDataToFile(Train train) {
-        String trainParameters = "22 33 44 ";//train.toString();
-        //String carriagesParameters = train.getCarriagesParameters(); // TODO add getCarria .. method
-        Document doc;
         try {
+            String trainParameters = train.getTrainParameters();
+
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
-            doc = db.newDocument();
+            Document doc = db.newDocument();
 
-            Element rootElement = doc.createElement("model");
+            Element rootElement = doc.createElement(XmlReadWriteFactory.MODEL_TAG);
             doc.appendChild(rootElement);
 
-            Element trainElement = doc.createElement("train");
+            Element trainElement = doc.createElement(XmlReadWriteFactory.TRAIN_TAG);
             rootElement.appendChild(trainElement);
 
-            Element trainParametersElement = doc.createElement("trainparameters");
+            Element trainParametersElement = doc.createElement(XmlReadWriteFactory.TRAINPARAMETERS_TAG);
             trainParametersElement.appendChild(doc.createTextNode(trainParameters));
             trainElement.appendChild(trainParametersElement);
 
-            Element carriagesElement = doc.createElement("carriages");
+            Element carriagesElement = doc.createElement(XmlReadWriteFactory.CARRIAGES_TAG);
             rootElement.appendChild(carriagesElement);
 
-            Element quantityElement = doc.createElement("quantity");
-            quantityElement.appendChild(doc.createTextNode("2"));
+            Element quantityElement = doc.createElement(XmlReadWriteFactory.QUANTITY_TAG);
+            quantityElement.appendChild(doc.createTextNode(String.valueOf(train.getCarriagesQuantity())));
             carriagesElement.appendChild(quantityElement);
 
-            Element carriagesParametersElement = doc.createElement("carriagesparameters");
-            carriagesParametersElement.appendChild(doc.createTextNode("carriagesparameters 22 33 44"));
+            Element carriagesParametersElement = doc.createElement(XmlReadWriteFactory.CARRIAGEPARAMETERS_TAG);
+            StringBuilder carriagesParametersAsString = new StringBuilder();
+            for (Carriage carriage : train.getCarriagesCopy())
+                carriagesParametersAsString.append(carriage.getCarriagesParameters());
+            carriagesParametersElement.appendChild(doc.createTextNode(carriagesParametersAsString.toString()));
             carriagesElement.appendChild(carriagesParametersElement);
 
             try {
@@ -59,12 +65,12 @@ public class XmlDataSaver implements DataSaver {
                 tr.transform(new DOMSource(doc),
                         new StreamResult(new FileOutputStream(outputFileName)));
             } catch (TransformerException te) {
-                System.out.println(te.getMessage());
+                logger.log(Level.WARNING, "UsersXML: Error trying to instantiate Transformer " + te);
             } catch (IOException ioe) {
-                System.out.println(ioe.getMessage());
+                logger.log(Level.WARNING, "UsersXML: Error trying to instantiate FileOutputStream " + ioe);
             }
         } catch (ParserConfigurationException pce) {
-            System.out.println("UsersXML: Error trying to instantiate DocumentBuilder " + pce);
+            logger.log(Level.WARNING, "UsersXML: Error trying to instantiate DocumentBuilder " + pce);
         }
     }
 }

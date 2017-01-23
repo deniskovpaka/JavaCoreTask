@@ -5,4 +5,11 @@ public class FreightTrain extends Train {
     public String getTrainName() {
         return "FREIGHT_TRAIN";
     }
+
+    @Override
+    public String getTrainParameters() {
+        return getTrainName()
+                + ", " + getEngineType()
+                + ", " + getCarriagesQuantity();
+    }
 }

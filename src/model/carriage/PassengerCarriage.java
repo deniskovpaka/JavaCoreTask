@@ -22,4 +22,11 @@ public class PassengerCarriage extends Carriage {
                 ", numberOfPassengers=" + numberOfPassengers +
                 '}';
     }
+
+    @Override
+    public String getCarriagesParameters() {
+        return getComfortLevel()
+                + ", " + getBaggageCapacity()
+                + ", " + getNumberOfPassengers();
+    }
 }

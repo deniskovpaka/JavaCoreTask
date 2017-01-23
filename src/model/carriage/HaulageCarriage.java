@@ -15,4 +15,11 @@ public class HaulageCarriage extends Carriage {
     public void setTractionForce(int tractionForce) {
         this.tractionForce = tractionForce;
     }
+
+    @Override
+    public String getCarriagesParameters() {
+        return getComfortLevel()
+                + ", " + getBaggageCapacity()
+                + ", " + getTractionForce();
+    }
 }
