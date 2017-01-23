@@ -1,6 +1,7 @@
 import io.input.TxtDataReader;
 import io.input.XmlDataReader;
 import io.output.TxtDataSaver;
+import io.output.XmlDataSaver;
 import model.carriage.Carriage;
 import model.carriage.PassengerCarriage;
 import model.characteristics.ComfortLevel;
@@ -48,11 +49,13 @@ public class ProgramExecutionCore {
 //                new Calculation.BaggageCalculator()));
 //        TxtDataReader reader = new TxtDataReader(DATA_READER_PATH + "PassengerTrain.txt");
 //        TxtDataSaver saver = new TxtDataSaver(DATA_SAVER_PATH + "PassengerTrainOut.txt");
-        XmlDataReader reader = new XmlDataReader(DATA_READER_PATH + "PassengerTrain.xml");
+//        XmlDataReader reader = new XmlDataReader(DATA_READER_PATH + "PassengerTrain.xml");
+        XmlDataSaver saver = new XmlDataSaver(DATA_SAVER_PATH + "PassengerTrainOut.xml");
+        saver.saveDataToFile(train);
         //saver.saveDataToFile(train);
-        String[] str = reader.readInitialParameters();
-        for (String s : str)
-            System.out.println(s);
+//        String[] str = reader.readInitialParameters();
+//        for (String s : str)
+//            System.out.println(s);
 
         // TODO This execution method will be completely reworked later
     }

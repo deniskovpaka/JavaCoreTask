@@ -1,6 +1,9 @@
 package model.builders;
 
+import model.train.Train;
+
 public interface TrainBuilder {
+    Train getTrain();
     void createTrain();
-    void setDefiniteTrainParameters(String[] parameters);
+    void buildTrainParameters(String[] parameters);
 }

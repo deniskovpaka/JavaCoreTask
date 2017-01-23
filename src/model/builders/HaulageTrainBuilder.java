@@ -1,13 +1,13 @@
 package model.builders;
 
-public class HaulageTrainBuilder implements TrainBuilder {
+public class HaulageTrainBuilder extends TrainBuilder {
     @Override
     public void createTrain() {
 
     }
 
     @Override
-    public void setDefiniteTrainParameters(String[] parameters) {
+    public void buildDefiniteTrainParameters(String[] parameters) {
 
     }
 }
