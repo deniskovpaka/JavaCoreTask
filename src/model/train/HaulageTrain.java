@@ -2,14 +2,14 @@ package model.train;
 
 public class HaulageTrain extends Train {
     private double carriageCost;
-    private boolean onRepair;
+    private boolean isOnRepair;
 
     public boolean isOnRepair() {
-        return onRepair;
+        return isOnRepair;
     }
 
     public void setOnRepair(boolean onRepair) {
-        this.onRepair = onRepair;
+        this.isOnRepair = onRepair;
     }
 
     public double getCarriageCost() {

@@ -2,6 +2,8 @@ package model.carriage;
 
 import model.characteristics.ComfortLevel;
 
+import java.util.EnumSet;
+
 public abstract class Carriage {
     private ComfortLevel comfortLevel;
     private double baggageCapacity;
@@ -36,4 +38,22 @@ public abstract class Carriage {
      * a different ways/modes.
      */
     public abstract String getCarriagesParameters();
+
+    /**
+     * This method implements the common algorithm in order to
+     * get specific enum value. As every carriage has a some
+     * certain enum parameter.
+     * @param clazz carriage enum.
+     * @param str carriage enum as String.
+     * @return certain enum parameter.
+     */
+    public static <E extends Enum<E>>
+    E convertString(Class<E> clazz, String str){
+        for(E en : EnumSet.allOf(clazz)){
+            if(en.toString().equals(str.toUpperCase())){
+                return en;
+            }
+        }
+        return null;
+    }
 }

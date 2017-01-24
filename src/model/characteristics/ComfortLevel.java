@@ -1,7 +1,7 @@
 package model.characteristics;
 
 /**
- * ComfortLevel represents comfort level of a carriage.
+ * ComfortLevel represents a carriage comfort level.
  *
  * @author deniskovpaka
  */
