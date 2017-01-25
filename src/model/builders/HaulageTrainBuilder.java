@@ -27,11 +27,11 @@ public class HaulageTrainBuilder extends TrainBuilder {
     @Override
     public void buildTrainParameters(String[] parameters) throws IllegalArgumentException {
         /**
-         * (TrainBuilder.HAULAGE_CARRIAGE_PARAMETER_QUANTITY) this is
+         * (TrainBuilder.HAULAGE_TRAIN_PARAMETER_QUANTITY) this is
          * a minimum parameters number for haulage train creation:
          * {Haulage, EngineType, CarriageCost, isOnRepair}.
          */
-        checkInputParametersSize(TrainBuilder.HAULAGE_CARRIAGE_PARAMETER_QUANTITY,
+        checkInputParametersSize(TrainBuilder.HAULAGE_TRAIN_PARAMETER_QUANTITY,
                                 parameters);
 
         int parameterPosition = 0;
@@ -53,7 +53,7 @@ public class HaulageTrainBuilder extends TrainBuilder {
          * Create haulage carriages if and only if there
          * are exist parameters for their creation.
          */
-        if (areParametersExistForCarriagesCreation(TrainBuilder.HAULAGE_CARRIAGE_PARAMETER_QUANTITY,
+        if (areParametersExistForCarriagesCreation(TrainBuilder.HAULAGE_TRAIN_PARAMETER_QUANTITY,
                                                     parameters)) {
             // CarriagesQuantity value parsing.
             int carriagesQuantity = Integer.parseInt(parameters[parameterPosition++]);
