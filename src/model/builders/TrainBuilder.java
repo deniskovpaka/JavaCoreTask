@@ -32,13 +32,24 @@ public abstract class TrainBuilder {
         this.carriageParameterQuantity = carriageParameterQuantity;
     }
 
+    /**
+     * A template method for building specific train.
+     * @param parameters train attributes.
+     * @return new specific train.
+     */
+    public final Train buildTrain(String[] parameters) throws IllegalArgumentException {
+        createTrain();
+        buildTrainParameters(parameters);
+        return getTrain();
+    }
+
     abstract Train getTrain();
     abstract void createTrain();
 
     /**
      * Builds train parameters by using String array.
      * Each string parameter is parsed for specific train attribute.
-     * @param parameters train attributes
+     * @param parameters train attributes.
      * @throws NumberFormatException in case of invalid parameter.
      */
     abstract void buildTrainParameters(String[] parameters) throws IllegalArgumentException;

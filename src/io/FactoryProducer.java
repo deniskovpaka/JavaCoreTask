@@ -1,14 +1,20 @@
 package io;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class FactoryProducer {
+    final static Logger logger = Logger.getLogger(FactoryProducer.class.getName());
     /**
-     * Use getFactory method to get
+     * Use createReadWriteFactory method to get
      * object of type ReadWriteFactory.
      * @param fileName
      * @return specific ReadWriteFactory.
      */
-    public static ReadWriteFactory getFactory(String fileName) {
+    public static ReadWriteFactory createReadWriteFactory(String fileName) {
         if (fileName == null) {
+            logger.log(Level.WARNING, "The ReadWriteFactory creation FAILED!!!" +
+                    " The fileName is NULL.");
             return null;
         }
         String extension = getFileNameExtension(fileName);
@@ -17,6 +23,8 @@ public class FactoryProducer {
         } else if (extension.equalsIgnoreCase("XML")) {
             return new XmlReadWriteFactory();
         }
+        logger.log(Level.WARNING, "The ReadWriteFactory creation FAILED!!! " +
+                "Invalid fileName extension.");
         return null;
     }
 
