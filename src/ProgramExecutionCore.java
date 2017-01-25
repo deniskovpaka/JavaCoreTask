@@ -1,7 +1,3 @@
-import io.input.TxtDataReader;
-import io.input.XmlDataReader;
-import io.output.TxtDataSaver;
-import io.output.XmlDataSaver;
 import model.carriage.Carriage;
 import model.carriage.PassengerCarriage;
 import model.characteristics.ComfortLevel;
@@ -9,10 +5,8 @@ import model.characteristics.EngineType;
 import model.train.PassengerTrain;
 import model.train.Train;
 
-import java.io.IOException;
-
-import static io.input.DataReader.DATA_READER_PATH;
-import static io.output.DataSaver.DATA_SAVER_PATH;
+import static io.FilePaths.DATA_READER_PATH;
+import static io.FilePaths.DATA_SAVER_PATH;
 
 public class ProgramExecutionCore {
     public static void main(String[] args) {
@@ -50,13 +44,14 @@ public class ProgramExecutionCore {
 //        TxtDataReader reader = new TxtDataReader(DATA_READER_PATH + "PassengerTrain.txt");
 //        TxtDataSaver saver = new TxtDataSaver(DATA_SAVER_PATH + "PassengerTrainOut.txt");
 //        XmlDataReader reader = new XmlDataReader(DATA_READER_PATH + "PassengerTrain.xml");
-        XmlDataSaver saver = new XmlDataSaver(DATA_SAVER_PATH + "PassengerTrainOut.xml");
-        saver.saveDataToFile(train);
+        // XmlDataSaver saver = new XmlDataSaver(DATA_SAVER_PATH + "PassengerTrainOut.xml");
+        //saver.saveDataToFile(train);
         //saver.saveDataToFile(train);
 //        String[] str = reader.readInitialParameters();
 //        for (String s : str)
 //            System.out.println(s);
-
+        System.out.println(DATA_SAVER_PATH);
+        System.out.println(DATA_READER_PATH);
         // TODO This execution method will be completely reworked later
     }
 }
