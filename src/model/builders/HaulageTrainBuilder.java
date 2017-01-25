@@ -7,8 +7,12 @@ import model.characteristics.EngineType;
 import model.train.HaulageTrain;
 import model.train.Train;
 
-public class HaulageTrainBuilder implements TrainBuilder {
+public class HaulageTrainBuilder extends TrainBuilder {
     HaulageTrain train;
+
+    public HaulageTrainBuilder() {
+        super(TrainBuilder.HAULAGE_CARRIAGE_PARAMETER_QUANTITY);
+    }
 
     @Override
     public void createTrain() {
@@ -22,23 +26,20 @@ public class HaulageTrainBuilder implements TrainBuilder {
 
     @Override
     public void buildTrainParameters(String[] parameters) throws IllegalArgumentException {
-        /** Freight carriage has 3 parameters
-         * {baggageCapacity, ComfortLevel, tractionForce}.
-         * Advance forward through three parameter step.
-         * (haulageCarriageStep + 1) is also minimum parameters
-         * number for freight train creation.
+        /**
+         * (TrainBuilder.HAULAGE_CARRIAGE_PARAMETER_QUANTITY) this is
+         * a minimum parameters number for haulage train creation:
+         * {Haulage, EngineType, CarriageCost, isOnRepair}.
          */
-        int haulageCarriageStep = 3;
-        if (parameters == null || parameters.length <= (haulageCarriageStep + 1))
-            throw new IllegalArgumentException();
+        checkInputParametersSize(TrainBuilder.HAULAGE_CARRIAGE_PARAMETER_QUANTITY,
+                                parameters);
 
         int parameterPosition = 0;
 
-        // EngineType value parsing. // TODO remove dups in all builders
+        // EngineType value parsing.
         EngineType engineType = Carriage.convertString(EngineType.class,
                 parameters[parameterPosition++]);
-        if (engineType == null) throw new NumberFormatException();
-        train.setEngineType(engineType);
+        buildEngineType(engineType, train);
 
         // CarriageCost value parsing.
         double carriageCost = Double.parseDouble(parameters[parameterPosition++]);
@@ -48,35 +49,36 @@ public class HaulageTrainBuilder implements TrainBuilder {
         boolean isOnRepair = Boolean.parseBoolean(parameters[parameterPosition++]);
         buildIsOnRepairParameter(isOnRepair);
 
-        // CarriagesQuantity value parsing.
-        int carriagesQuantity = Integer.parseInt(parameters[parameterPosition++]);
-
-        // Haulage carriage values parsing.
-        while (parameterPosition < parameters.length) {
-            // ComfortLevel value parsing.
-            ComfortLevel comfortLevel = Carriage.convertString(ComfortLevel.class,
-                    parameters[parameterPosition + 1]);
-            if (comfortLevel == null) throw new NumberFormatException();
-
-            // BaggageCapacity value parsing.
-            double baggageCapacity = Double.parseDouble(parameters[parameterPosition + 2]);
-
-            // TractionForce value parsing.
-            int tractionForce = Integer.parseInt(parameters[parameterPosition + 3]);
-
-            // FreightTrain creation.
-            HaulageCarriage carriage = new HaulageCarriage(baggageCapacity, tractionForce);
-            carriage.setComfortLevel(comfortLevel);
-            train.addCarrage(carriage);
-
-            parameterPosition += haulageCarriageStep;
-        }
-
-        /** Additional checking for proper carriages quantity
-         * creation.
+        /**
+         * Create haulage carriages if and only if there
+         * are exist parameters for their creation.
          */
-        if (carriagesQuantity != train.getCarriagesQuantity()) {  // TODO remove dups in all builders
-            throw new IllegalArgumentException();
+        if (areParametersExistForCarriagesCreation(TrainBuilder.HAULAGE_CARRIAGE_PARAMETER_QUANTITY,
+                                                    parameters)) {
+            // CarriagesQuantity value parsing.
+            int carriagesQuantity = Integer.parseInt(parameters[parameterPosition++]);
+
+            // Haulage carriage values parsing.
+            while (parameterPosition < parameters.length) {
+                // ComfortLevel value parsing.
+                ComfortLevel comfortLevel = Carriage.convertString(ComfortLevel.class,
+                                            parameters[parameterPosition + 1]);
+                if (comfortLevel == null) throw new NumberFormatException();
+
+                // BaggageCapacity value parsing.
+                double baggageCapacity = Double.parseDouble(parameters[parameterPosition + 2]);
+
+                // TractionForce value parsing.
+                int tractionForce = Integer.parseInt(parameters[parameterPosition + 3]);
+
+                // FreightTrain creation.
+                HaulageCarriage carriage = new HaulageCarriage(baggageCapacity, tractionForce);
+                buildComfortLevel(carriage, comfortLevel);
+                train.addCarrage(carriage);
+
+                parameterPosition += TrainBuilder.HAULAGE_CARRIAGE_PARAMETER_QUANTITY;
+            }
+            checkCorrectnessCreatedCarriagesNumbe(carriagesQuantity, train.getCarriagesQuantity());
         }
     }
 
@@ -86,5 +88,9 @@ public class HaulageTrainBuilder implements TrainBuilder {
 
     private void buildIsOnRepairParameter(boolean isOnRepair) {
         train.setOnRepair(isOnRepair);
+    }
+
+    private void buildComfortLevel(HaulageCarriage carriage, ComfortLevel comfortLevel) {
+        carriage.setComfortLevel(comfortLevel);
     }
 }

@@ -7,8 +7,12 @@ import model.characteristics.KindOfGoods;
 import model.train.FreightTrain;
 import model.train.Train;
 
-public class FreightTrainBuilder implements TrainBuilder {
+public class FreightTrainBuilder extends TrainBuilder {
     FreightTrain train;
+
+    public FreightTrainBuilder() {
+        super(TrainBuilder.FREIGHT_CARRIAGE_PARAMETER_QUANTITY);
+    }
 
     @Override
     public void createTrain() {
@@ -22,47 +26,46 @@ public class FreightTrainBuilder implements TrainBuilder {
 
     @Override
     public void buildTrainParameters(String[] parameters) throws IllegalArgumentException {
-        /** Freight carriage has 2 parameters
-        * {baggageCapacity, KindOfGoods}.
-        * Advance forward through two parameter step.
-        * This is also minimum parameters number for freight train creation.
-        */
-        int freightCarriageStep = 2;
-        if (parameters == null || parameters.length <= freightCarriageStep)
-            throw new IllegalArgumentException();
+        /**
+         * (TrainBuilder.FREIGHT_TRAIN_PARAMETER_QUANTITY) this is
+         * a minimum parameters number for freight train creation:
+         * {Freight, EngineType}.
+         */
+        checkInputParametersSize(TrainBuilder.FREIGHT_TRAIN_PARAMETER_QUANTITY,
+                                parameters);
 
         int parameterPosition = 0;
 
         // EngineType value parsing.
         EngineType engineType = Carriage.convertString(EngineType.class,
                 parameters[parameterPosition++]);
-        if (engineType == null) throw new NumberFormatException();
-        train.setEngineType(engineType);
+        buildEngineType(engineType, train);
 
-        // CarriagesQuantity value parsing.
-        int carriagesQuantity = Integer.parseInt(parameters[parameterPosition++]);
-
-        // Freight carriage values parsing.
-        while (parameterPosition < parameters.length) {
-            // BaggageCapacity value parsing.
-            double baggageCapacity = Double.parseDouble(parameters[parameterPosition + 1]);
-
-            // KindOfGoods value parsing.
-            KindOfGoods kindOfGoods = Carriage.convertString(KindOfGoods.class,
-                                        parameters[parameterPosition + 2]);
-
-            // FreightTrain creation.
-            FreightCarriage carriage = new FreightCarriage(baggageCapacity, kindOfGoods);
-            train.addCarrage(carriage);
-
-            parameterPosition += freightCarriageStep;
-        }
-
-        /** Additional checking for proper carriages quantity
-         * creation.
+        /**
+         * Create freight carriages if and only if there
+         * are exist parameters for their creation.
          */
-        if (carriagesQuantity != train.getCarriagesQuantity()) {
-            throw new IllegalArgumentException();
+        if (areParametersExistForCarriagesCreation(TrainBuilder.FREIGHT_TRAIN_PARAMETER_QUANTITY,
+                                                    parameters)) {
+            // CarriagesQuantity value parsing.
+            int carriagesQuantity = Integer.parseInt(parameters[parameterPosition++]);
+
+            // Freight carriage values parsing.
+            while (parameterPosition < parameters.length) {
+                // BaggageCapacity value parsing.
+                double baggageCapacity = Double.parseDouble(parameters[parameterPosition + 1]);
+
+                // KindOfGoods value parsing.
+                KindOfGoods kindOfGoods = Carriage.convertString(KindOfGoods.class,
+                                            parameters[parameterPosition + 2]);
+
+                // FreightTrain creation.
+                FreightCarriage carriage = new FreightCarriage(baggageCapacity, kindOfGoods);
+                train.addCarrage(carriage);
+
+                parameterPosition += TrainBuilder.FREIGHT_CARRIAGE_PARAMETER_QUANTITY;
+            }
+            checkCorrectnessCreatedCarriagesNumbe(carriagesQuantity, train.getCarriagesQuantity());
         }
     }
 }
