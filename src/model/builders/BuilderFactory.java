@@ -7,7 +7,7 @@ public class BuilderFactory {
      * @param builderName
      * @return specific TrainBuilder
      */
-    public TrainBuilder createTrainBuilder(String builderName) {
+    public static TrainBuilder createTrainBuilder(String builderName) {
         if(builderName == null){
             return null;
         }
