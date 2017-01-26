@@ -1,5 +1,10 @@
 package model.train;
 
+/**
+ * PassengerTrain class represent the passenger train.
+ *
+ * @author deniskovpaka
+ */
 public class PassengerTrain extends Train {
     private int numberOfAvailableSeats;
 
@@ -12,15 +17,8 @@ public class PassengerTrain extends Train {
     }
 
     @Override
-    public String toString() {
-        return super.toString() + " PassengerTrain{" +
-                "numberOfAvailableSeats=" + numberOfAvailableSeats +
-                '}';
-    }
-
-    @Override
     public String getTrainName() {
-        return "PASSENGER_TRAIN";
+        return PASSENGER_TRAIN_NAME;
     }
 
     @Override

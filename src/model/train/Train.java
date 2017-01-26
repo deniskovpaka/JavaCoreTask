@@ -8,11 +8,33 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public abstract class Train{
+/**
+ * The Train class contains common
+ * parameters for all kinds of trains.
+ * {FreightTrain, HaulageTrain, PassengerTrain}.
+ *
+ * @author deniskovpaka
+ */
+public abstract class Train {
+    /**
+     * Train names.
+     */
+    public static final String FREIGHT_TRAIN_NAME =     "FREIGHT_TRAIN";
+    public static final String HAULAGE_TRAIN_NAME =     "HAULAGE_TRAIN";
+    public static final String PASSENGER_TRAIN_NAME =   "PASSENGER_TRAIN";
+
+    /**
+     * Store specific kinds of carriages.
+     * {FreightCarriage, HaulageCarriage, PassengerCarriage}.
+     */
     private List<Carriage> carriages;
+
     private EngineType engineType;
     final static Logger logger = Logger.getLogger(Train.class.getName());
 
+    /**
+     * Train constructor.
+     */
     public Train() {
         this.carriages = new LinkedList<>();
     }
@@ -34,6 +56,10 @@ public abstract class Train{
         this.engineType = engineType;
     }
 
+    /**
+     * Add specific carriage.
+     * @param carriage
+     */
     public void addCarrage(Carriage carriage) {
         carriages.add(carriage);
     }
@@ -53,9 +79,9 @@ public abstract class Train{
 
     @Override
     public String toString() {
-        return "Train{" +
-                "carriages=" + carriages +
-                ", engineType=" + engineType +
+        return getTrainName() +
+                ", engineType = " + engineType +
+                "carriages = {\n" + carriages +
                 '}';
     }
 

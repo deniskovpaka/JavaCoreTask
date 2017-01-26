@@ -1,5 +1,10 @@
 package model.train;
 
+/**
+ * HaulageTrain class represent the haulage train.
+ *
+ * @author deniskovpaka
+ */
 public class HaulageTrain extends Train {
     private double carriageCost;
     private boolean isOnRepair;
@@ -22,7 +27,7 @@ public class HaulageTrain extends Train {
 
     @Override
     public String getTrainName() {
-        return "HAULAGE_TRAIN";
+        return HAULAGE_TRAIN_NAME;
     }
 
     @Override
