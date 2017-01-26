@@ -1,3 +1,4 @@
+import algorithms.Context;
 import model.ResourceManager;
 import model.trains.Train;
 
@@ -5,11 +6,20 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class ProgramExecutionCore {
-    final static Logger logger = Logger.getLogger(ProgramExecutionCore.class.getName());
+    /**
+     * Input borders in main menu loop.
+     */
+    private static int LOWER_INPUT_MAIN_MENU = 1;
+    private static int UPPER_INPUT_MAIN_MENU = 5;
+
+    /**
+     * Input borders in sort menu.
+     */
+    private static int LOWER_INPUT_SORT_MENU = 1;
+    private static int UPPER_INPUT_SORT_MENU = 2;
+
     public static void main(String[] args) {
         /**
          * The args[0] argument should contain the name of
@@ -30,14 +40,19 @@ public class ProgramExecutionCore {
                  */
                 boolean isProgramExecutes = true;
                 int userInput;
+                Context context = new Context();
                 while (isProgramExecutes) {
                     /**
                      * Show interface menu.
                      */
                     showInterfaceMenu();
-                    userInput = parseUserInput();
+                    userInput = parseUserInput(LOWER_INPUT_MAIN_MENU,
+                                                UPPER_INPUT_MAIN_MENU);
                     switch (userInput) {
                         case 1:
+                            showSortMenu();
+                            int sortInput = parseUserInput(LOWER_INPUT_SORT_MENU,
+                                                            UPPER_INPUT_SORT_MENU);
                             break;
                         case 2:
                             break;
@@ -53,8 +68,6 @@ public class ProgramExecutionCore {
                     }
                 }
             } catch (IOException e) {
-                logger.log(Level.WARNING, "The create train from file "
-                        + fileNameWithTrainParameters + " is FAILED!!!");
                 e.printStackTrace();
             }
 
@@ -115,7 +128,13 @@ public class ProgramExecutionCore {
         System.out.println("5. Exit from program");
     }
 
-    private static int parseUserInput() {
+    private static void showSortMenu() {
+        System.out.println("Would you like to sort by:");
+        System.out.println("1. Passenger number");
+        System.out.println("2. Comfort level");
+    }
+
+    private static int parseUserInput(int lowerInput, int upperInput) {
         Scanner scanner = new Scanner(System.in);
         String userInput;
         int input;
@@ -128,7 +147,7 @@ public class ProgramExecutionCore {
                 System.out.println("Your input is INCORRECT!!!\r\n");
                 input = 0;
             }
-        } while (input < 1 || input > 5);
+        } while (input < lowerInput || input > upperInput);
         System.out.println("The client input is " + input);
         return input;
     }
