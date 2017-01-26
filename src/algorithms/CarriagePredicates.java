@@ -9,9 +9,16 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 /**
- * The CarriagePredicates class used to filter out train carriages by special predicate.
+ * The CarriagePredicates class used to filter out
+ * train carriages by special predicate.
+ *
+ * @author deniskovpaka
  */
 public class CarriagePredicates {
+
+    /**
+     * The ComfortLevelFilter class filtered out carriages by comfort level.
+     */
     public static class ComfortLevelFilter implements Predicate<Carriage> {
         private ComfortLevel comfortLevel;
 
@@ -25,6 +32,9 @@ public class CarriagePredicates {
         }
     }
 
+    /**
+     * The PassengersFilter class filtered out carriages by passenger quantity.
+     */
     public static class PassengersFilter implements Predicate<PassengerCarriage> {
         private int quantityPassengers;
 
@@ -37,8 +47,18 @@ public class CarriagePredicates {
             return passengerCarriage.getNumberOfPassengers() == this.quantityPassengers;
         }
     }
+
+    /**
+     * The common algorithm for finding process.
+     * @param carriages list of carriages.
+     * @param predicate find by specific predicate.
+     * @return filtered out carriages list by predicate.
+     * Note: This method may throws ArrayStoreException if
+     * there are different types of carriages.
+     */
     public static List<Carriage> filterCarriages(List<Carriage> carriages,
                                                  Predicate predicate) {
+        Carriage.areUniformCarriages(carriages);
         return carriages.stream().filter(carriage -> predicate.test(carriage)).collect(Collectors.toList());
     }
 }

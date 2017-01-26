@@ -3,7 +3,7 @@ package model.train;
 import model.characteristics.EngineType;
 import model.carriage.Carriage;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -11,14 +11,14 @@ import java.util.logging.Logger;
 public abstract class Train{
     private List<Carriage> carriages;
     private EngineType engineType;
-    final static Logger logger = Logger.getLogger(Train.class.getName()); // TODO it may be better to use log4j
+    final static Logger logger = Logger.getLogger(Train.class.getName());
 
     public Train() {
-        this.carriages = new ArrayList<>();
+        this.carriages = new LinkedList<>();
     }
 
     public List<Carriage> getCarriagesCopy() {
-        List<Carriage> carriagesCopy = new ArrayList<>(carriages);
+        List<Carriage> carriagesCopy = new LinkedList<>(carriages);
         return carriagesCopy;
     }
 

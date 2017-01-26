@@ -8,8 +8,18 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * The CarriageComparators class provides comparator
+ * set in order to sort carriages by
+ * specific parameter.
+ *
+ * @author deniskovpaka
+ */
 public class CarriageComparators {
 
+    /**
+     * Sort carriages by passenger number.
+     */
     public static class SortPassengersByAscendingOrder implements Comparator<PassengerCarriage> {
         @Override
         public int compare(PassengerCarriage o1, PassengerCarriage o2) {
@@ -17,6 +27,9 @@ public class CarriageComparators {
         }
     }
 
+    /**
+     * Sort carriages by comfort level.
+     */
     public static class SortByComfortLevel implements Comparator<Carriage> {
         @Override
         public int compare(Carriage o1, Carriage o2) {
@@ -26,8 +39,17 @@ public class CarriageComparators {
         }
     }
 
+    /**
+     * The common algorithm for sorting process.
+     * @param carriages list of carriages.
+     * @param comparator sorter by specific parameters.
+     * @return sorted carriages list by comparator.
+     * Note: This method may throws ArrayStoreException if
+     * there are different types of carriages.
+     */
     public static List<Carriage> sortingCarriages(List<Carriage> carriages,
                                                   Comparator comparator) {
+        Carriage.areUniformCarriages(carriages);
         Collections.sort(carriages, comparator);
         return carriages;
     }

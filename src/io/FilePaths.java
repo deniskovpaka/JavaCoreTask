@@ -14,7 +14,7 @@ public class FilePaths {
             DATA_READER_PATH = "src\\io\\input\\inputdata\\";
             DATA_SAVER_PATH = "src\\io\\output\\outputdata\\";
         } else {
-            DATA_READER_PATH = "src/io/input/inputdata/"; // TODO check
+            DATA_READER_PATH = "src/io/input/inputdata/";
             DATA_SAVER_PATH = "src/io/output/outputdata/";
         }
     }

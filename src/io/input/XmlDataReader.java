@@ -26,7 +26,7 @@ public class XmlDataReader implements DataReader {
         File filePath = new File(inputFileName);
         try {
             DocumentBuilder dBuilder = DocumentBuilderFactory.newInstance()
-                    .newDocumentBuilder();
+                                        .newDocumentBuilder();
             doc = dBuilder.parse(filePath);
             doc.getDocumentElement().normalize();
             initialParameters = new LinkedList<>();

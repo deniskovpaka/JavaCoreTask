@@ -1,3 +1,6 @@
+import algorithms.Calculation;
+import algorithms.CarriageComparators;
+import algorithms.Context;
 import model.carriage.Carriage;
 import model.carriage.PassengerCarriage;
 import model.characteristics.ComfortLevel;
@@ -36,8 +39,9 @@ public class ProgramExecutionCore {
 //        System.out.println(CarriageComparators.sortingCarriages(train.getCarriagesCopy(),
 //                context.getComparator()));
 //        System.out.println("------AFTER2------");
+//        Calculation calculation = new Calculation(new Calculation.PassengerCalculator());
 //        System.out.println(Calculation.calculate(train.getCarriagesCopy(),
-//                new Calculation.PassengerCalculator()));
+//                calculation.getFunction()));
 //        System.out.println("------AFTER3------");
 //        System.out.println(Calculation.calculate(train.getCarriagesCopy(),
 //                new Calculation.BaggageCalculator()));

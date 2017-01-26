@@ -3,16 +3,34 @@ package model.carriage;
 import model.characteristics.ComfortLevel;
 
 import java.util.EnumSet;
+import java.util.List;
 
 public abstract class Carriage {
+    /**
+     * Carriages ID's.
+     */
+    public static final int FREIGHT_CARRIAGE_ID =       1;
+    public static final int HAULAGE_CARRIAGE_ID =       2;
+    public static final int PASSENGER_CARRIAGE_ID =     3;
+
+    /**
+     * Common atributes for all kinds of carriages.
+     */
     private ComfortLevel comfortLevel;
     private double baggageCapacity;
 
+    /**
+     * Carriage constructor.
+     * @param baggageCapacity
+     */
     public Carriage(double baggageCapacity) {
         this.comfortLevel = ComfortLevel.NONE;
         this.baggageCapacity = baggageCapacity;
     }
 
+    /**
+     * List of common carriages methods.
+     */
     public ComfortLevel getComfortLevel() {
         return comfortLevel;
     }
@@ -27,9 +45,8 @@ public abstract class Carriage {
 
     @Override
     public String toString() {
-        return "Carriage{" +
-                "comfortLevel=" + comfortLevel +
-                ", baggageCapacity=" + baggageCapacity;
+        return "comfortLevel = " + comfortLevel + "\r\n" +
+               "baggageCapacity = " + baggageCapacity + "\r\n";
     }
 
     /**
@@ -38,6 +55,12 @@ public abstract class Carriage {
      * a different ways/modes.
      */
     public abstract String getCarriagesParameters();
+
+    /**
+     * This method return specific carriage ID.
+     * @return carriage ID.
+     */
+    public abstract int getCarriageID();
 
     /**
      * This method implements the common algorithm in order to
@@ -55,5 +78,26 @@ public abstract class Carriage {
             }
         }
         return null;
+    }
+
+    /**
+     * This method checks that carriages should be uniform
+     * in order to execute one an algorithm on them.
+     * @param carriages carriages array.
+     * @throws ArrayStoreException if there are different types of carriages.
+     */
+    public static void areUniformCarriages(List<Carriage> carriages)
+            throws ArrayStoreException {
+        if (carriages.isEmpty()) return;
+        /**
+         * Get first carriage ID.
+         * It should be unified in list of
+         * carriages.
+         */
+        int carriageID = carriages.get(0).getCarriageID();
+        for(Carriage carriage : carriages) {
+            if (carriageID != carriage.getCarriageID())
+                new ArrayStoreException("Carriage list isn't uniform type");
+        }
     }
 }

@@ -2,7 +2,18 @@ package io.input;
 
 import java.io.IOException;
 
+/**
+ * The DataReader class is responsible
+ * for reading data from file.
+ *
+ * @author deniskovpaka
+ */
 public interface DataReader {
-    // String DATA_READER_PATH = "src\\io\\input\\inputdata\\"; // TODO It would be wonderful to set this in Config.file
+    /**
+     * Reads initial train parameters from file.
+     * @return train parameters as string array.
+     * @throws IOException in case of exception during
+     * reading data from a file.
+     */
     String[] readInitialParameters() throws IOException;
 }

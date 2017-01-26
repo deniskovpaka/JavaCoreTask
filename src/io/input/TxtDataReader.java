@@ -10,6 +10,12 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * The TxtDataReader class is responsible
+ * for reading data from TXT file.
+ *
+ * @author deniskovpaka
+ */
 public class TxtDataReader implements DataReader {
     private final Path filePath;
     private final static Charset ENCODING = StandardCharsets.UTF_8;
@@ -26,7 +32,7 @@ public class TxtDataReader implements DataReader {
 
     @Override
     public String[] readInitialParameters() throws IOException {
-        try (Scanner scanner =  new Scanner(filePath, ENCODING.name())) {
+        try (Scanner scanner = new Scanner(filePath, ENCODING.name())) {
             while (scanner.hasNextLine()) {
                 String[] parameters = scanner.nextLine().split(",");
                 initialParameters.addAll(Arrays.asList(parameters));

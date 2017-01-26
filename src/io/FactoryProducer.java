@@ -24,7 +24,7 @@ public class FactoryProducer {
             return new XmlReadWriteFactory();
         }
         logger.log(Level.WARNING, "The ReadWriteFactory creation FAILED!!! " +
-                "Invalid fileName extension.");
+                "The fileName extension is UNKNOWN.");
         return null;
     }
 

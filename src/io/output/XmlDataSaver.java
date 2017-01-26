@@ -21,56 +21,55 @@ import java.util.logging.Logger;
 
 public class XmlDataSaver implements DataSaver {
     private String outputFileName;
-    final static Logger logger = Logger.getLogger(XmlDataSaver.class.getName());
 
     public XmlDataSaver(String outputFileName) {
         this.outputFileName = outputFileName;
     }
 
     @Override
-    public void saveDataToFile(Train train) {
+    public void saveDataToFile(Train train) throws IOException {
+        String trainParameters = train.getTrainParameters();
+
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        DocumentBuilder db = null;
         try {
-            String trainParameters = train.getTrainParameters();
+            db = dbf.newDocumentBuilder();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+            throw new IOException("The DocumentBuilder creation FAILED!!!");
+        }
+        Document doc = db.newDocument();
 
-            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            Document doc = db.newDocument();
+        Element rootElement = doc.createElement(XmlReadWriteFactory.MODEL_TAG);
+        doc.appendChild(rootElement);
 
-            Element rootElement = doc.createElement(XmlReadWriteFactory.MODEL_TAG);
-            doc.appendChild(rootElement);
+        Element trainElement = doc.createElement(XmlReadWriteFactory.TRAIN_TAG);
+        rootElement.appendChild(trainElement);
 
-            Element trainElement = doc.createElement(XmlReadWriteFactory.TRAIN_TAG);
-            rootElement.appendChild(trainElement);
+        Element trainParametersElement = doc.createElement(XmlReadWriteFactory.TRAINPARAMETERS_TAG);
+        trainParametersElement.appendChild(doc.createTextNode(trainParameters));
+        trainElement.appendChild(trainParametersElement);
 
-            Element trainParametersElement = doc.createElement(XmlReadWriteFactory.TRAINPARAMETERS_TAG);
-            trainParametersElement.appendChild(doc.createTextNode(trainParameters));
-            trainElement.appendChild(trainParametersElement);
+        Element carriagesElement = doc.createElement(XmlReadWriteFactory.CARRIAGES_TAG);
+        rootElement.appendChild(carriagesElement);
 
-            Element carriagesElement = doc.createElement(XmlReadWriteFactory.CARRIAGES_TAG);
-            rootElement.appendChild(carriagesElement);
+        Element quantityElement = doc.createElement(XmlReadWriteFactory.QUANTITY_TAG);
+        quantityElement.appendChild(doc.createTextNode(String.valueOf(train.getCarriagesQuantity())));
+        carriagesElement.appendChild(quantityElement);
 
-            Element quantityElement = doc.createElement(XmlReadWriteFactory.QUANTITY_TAG);
-            quantityElement.appendChild(doc.createTextNode(String.valueOf(train.getCarriagesQuantity())));
-            carriagesElement.appendChild(quantityElement);
+        Element carriagesParametersElement = doc.createElement(XmlReadWriteFactory.CARRIAGEPARAMETERS_TAG);
+        StringBuilder carriagesParametersAsString = new StringBuilder();
+        for (Carriage carriage : train.getCarriagesCopy())
+            carriagesParametersAsString.append(carriage.getCarriagesParameters());
+        carriagesParametersElement.appendChild(doc.createTextNode(carriagesParametersAsString.toString()));
+        carriagesElement.appendChild(carriagesParametersElement);
 
-            Element carriagesParametersElement = doc.createElement(XmlReadWriteFactory.CARRIAGEPARAMETERS_TAG);
-            StringBuilder carriagesParametersAsString = new StringBuilder();
-            for (Carriage carriage : train.getCarriagesCopy())
-                carriagesParametersAsString.append(carriage.getCarriagesParameters());
-            carriagesParametersElement.appendChild(doc.createTextNode(carriagesParametersAsString.toString()));
-            carriagesElement.appendChild(carriagesParametersElement);
-
-            try {
-                Transformer tr = TransformerFactory.newInstance().newTransformer();
-                tr.transform(new DOMSource(doc),
-                        new StreamResult(new FileOutputStream(outputFileName)));
-            } catch (TransformerException te) {
-                logger.log(Level.WARNING, "UsersXML: Error trying to instantiate Transformer " + te);
-            } catch (IOException ioe) {
-                logger.log(Level.WARNING, "UsersXML: Error trying to instantiate FileOutputStream " + ioe);
-            }
-        } catch (ParserConfigurationException pce) {
-            logger.log(Level.WARNING, "UsersXML: Error trying to instantiate DocumentBuilder " + pce);
+        try {
+            Transformer tr = TransformerFactory.newInstance().newTransformer();
+            tr.transform(new DOMSource(doc),
+                    new StreamResult(new FileOutputStream(outputFileName)));
+        } catch (TransformerException te) {
+            throw new IOException("UsersXML: Error trying to instantiate Transformer!!!");
         }
     }
 }
