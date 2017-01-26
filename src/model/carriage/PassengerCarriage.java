@@ -2,8 +2,19 @@ package model.carriage;
 
 import model.characteristics.ComfortLevel;
 
+/**
+ * PassengerCarriage class represent the passenger carriage.
+ *
+ * @author deniskovpaka
+ */
 public class PassengerCarriage extends Carriage {
     private int numberOfPassengers;
+
+    /**
+     * PassengerCarriage constructor.
+     * @param comfortLevel
+     * @param baggageCapacity
+     */
     public PassengerCarriage(ComfortLevel comfortLevel, double baggageCapacity) {
         super(baggageCapacity);
         setComfortLevel(comfortLevel);
@@ -18,9 +29,9 @@ public class PassengerCarriage extends Carriage {
 
     @Override
     public String toString() {
-        return super.toString() +
-                ", numberOfPassengers=" + numberOfPassengers +
-                '}';
+        return "PassengerCarriage: " +
+                ", numberOfPassengers = " + numberOfPassengers + "\r\n"
+                + super.toString();
     }
 
     @Override
@@ -28,5 +39,10 @@ public class PassengerCarriage extends Carriage {
         return getComfortLevel()
                 + ", " + getBaggageCapacity()
                 + ", " + getNumberOfPassengers();
+    }
+
+    @Override
+    public int getCarriageID() {
+        return PASSENGER_CARRIAGE_ID;
     }
 }

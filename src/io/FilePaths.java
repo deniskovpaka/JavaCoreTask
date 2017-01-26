@@ -1,5 +1,11 @@
 package io;
 
+/**
+ * The FilePaths class is responsible
+ * for storing and reading file paths.
+ *
+ * @author deniskovpaka
+ */
 public class FilePaths {
     public static final String DATA_READER_PATH;
     public static final String DATA_SAVER_PATH;

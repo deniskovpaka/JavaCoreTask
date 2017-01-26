@@ -5,8 +5,16 @@ import io.input.XmlDataReader;
 import io.output.DataSaver;
 import io.output.XmlDataSaver;
 
+/**
+ * The XmlReadWriteFactory class is responsible
+ * for creation XML reader and saver.
+ *
+ * @author deniskovpaka
+ */
 public class XmlReadWriteFactory implements ReadWriteFactory {
-    // Read/Write tags
+    /**
+     * Read/Write tags
+     */
     public static String CARRIAGEPARAMETERS_TAG     = "carriageparameters";
     public static String CARRIAGES_TAG              = "carriages";
     public static String MODEL_TAG                  = "model";

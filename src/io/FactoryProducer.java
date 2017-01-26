@@ -3,6 +3,12 @@ package io;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * The FactoryProducer class is responsible
+ * for creation specific ReadWriteFactory.
+ *
+ * @author deniskovpaka
+ */
 public class FactoryProducer {
     final static Logger logger = Logger.getLogger(FactoryProducer.class.getName());
     /**
@@ -24,7 +30,7 @@ public class FactoryProducer {
             return new XmlReadWriteFactory();
         }
         logger.log(Level.WARNING, "The ReadWriteFactory creation FAILED!!! " +
-                "The fileName extension is UNKNOWN.");
+                                    "The fileName extension is UNKNOWN.");
         return null;
     }
 

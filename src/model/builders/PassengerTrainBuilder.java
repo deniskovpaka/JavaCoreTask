@@ -7,9 +7,18 @@ import model.characteristics.EngineType;
 import model.train.PassengerTrain;
 import model.train.Train;
 
+/**
+ * The PassengerTrainBuilder class is responsible
+ * for creation a passenger train's builder.
+ *
+ * @author deniskovpaka
+ */
 public class PassengerTrainBuilder extends TrainBuilder {
     private PassengerTrain train;
 
+    /**
+     * PassengerTrainBuilder constructor.
+     */
     public PassengerTrainBuilder() {
         super(TrainBuilder.PASSENGER_CARRIAGE_PARAMETER_QUANTITY);
     }
@@ -24,6 +33,11 @@ public class PassengerTrainBuilder extends TrainBuilder {
         return train;
     }
 
+    /**
+     * Builds passenger train parameters by using String array.
+     * @param parameters passenger train attributes.
+     * @throws NumberFormatException in case of invalid parameter.
+     */
     @Override
     public void buildTrainParameters(String[] parameters) throws IllegalArgumentException {
         /**
@@ -78,6 +92,9 @@ public class PassengerTrainBuilder extends TrainBuilder {
         }
     }
 
+    /**
+     * Some specific private build methods for creation passenger train.
+     */
     private void buildNumberOfAvailableSeats(int numberOfAvailableSeats) {
         train.setNumberOfAvailableSeats(numberOfAvailableSeats);
     }

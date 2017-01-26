@@ -5,6 +5,13 @@ import model.characteristics.ComfortLevel;
 import java.util.EnumSet;
 import java.util.List;
 
+/**
+ * The Carriage class contains common
+ * parameters for all kinds of carriages.
+ * {FreightCarriage, HaulageCarriage, PassengerCarriage}.
+ *
+ * @author deniskovpaka
+ */
 public abstract class Carriage {
     /**
      * Carriages ID's.
@@ -14,7 +21,7 @@ public abstract class Carriage {
     public static final int PASSENGER_CARRIAGE_ID =     3;
 
     /**
-     * Common atributes for all kinds of carriages.
+     * Common attributes for all kinds of carriages.
      */
     private ComfortLevel comfortLevel;
     private double baggageCapacity;

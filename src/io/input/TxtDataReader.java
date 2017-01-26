@@ -10,6 +10,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
+import static io.FilePaths.DATA_READER_PATH;
+
 /**
  * The TxtDataReader class is responsible
  * for reading data from TXT file.
@@ -26,10 +28,16 @@ public class TxtDataReader implements DataReader {
      * @param inputFileName full name of an existing, readable file.
      */
     public TxtDataReader(String inputFileName) {
-        filePath = Paths.get(inputFileName);
+        filePath = Paths.get(DATA_READER_PATH + inputFileName);
         initialParameters = new LinkedList<>();
     }
 
+    /**
+     * Reads initial train parameters from TXT file.
+     * @return train parameters as string array.
+     * @throws IOException in case of exception during
+     * reading data from a file.
+     */
     @Override
     public String[] readInitialParameters() throws IOException {
         try (Scanner scanner = new Scanner(filePath, ENCODING.name())) {

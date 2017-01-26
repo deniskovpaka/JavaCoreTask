@@ -16,16 +16,30 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
+import static io.FilePaths.DATA_SAVER_PATH;
+
+/**
+ * The TxtDataSaver class is responsible
+ * for saving data to file in XML format.
+ * XML format is described in *DataInputFormat.txt*
+ * file.
+ *
+ * @author deniskovpaka
+ */
 public class XmlDataSaver implements DataSaver {
     private String outputFileName;
 
     public XmlDataSaver(String outputFileName) {
-        this.outputFileName = outputFileName;
+        this.outputFileName = DATA_SAVER_PATH + outputFileName;
     }
 
+    /**
+     * Save train parameters into XML file.
+     * @param train
+     * @throws IOException in case of exception during
+     * saving data into file.
+     */
     @Override
     public void saveDataToFile(Train train) throws IOException {
         String trainParameters = train.getTrainParameters();
@@ -67,7 +81,7 @@ public class XmlDataSaver implements DataSaver {
         try {
             Transformer tr = TransformerFactory.newInstance().newTransformer();
             tr.transform(new DOMSource(doc),
-                    new StreamResult(new FileOutputStream(outputFileName)));
+                        new StreamResult(new FileOutputStream(outputFileName)));
         } catch (TransformerException te) {
             throw new IOException("UsersXML: Error trying to instantiate Transformer!!!");
         }

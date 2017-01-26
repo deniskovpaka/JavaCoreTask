@@ -3,6 +3,12 @@ package model.builders;
 import model.characteristics.EngineType;
 import model.train.Train;
 
+/**
+ * The TrainBuilder class is responsible
+ * for creation specific train.
+ *
+ * @author deniskovpaka
+ */
 public abstract class TrainBuilder {
     /** Every train has a various parameters quantity.
      * Freight train {Freight, EngineType}.

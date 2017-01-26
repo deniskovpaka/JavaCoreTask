@@ -7,9 +7,18 @@ import model.characteristics.EngineType;
 import model.train.HaulageTrain;
 import model.train.Train;
 
+/**
+ * The HaulageTrainBuilder class is responsible
+ * for creation a haulage train's builder.
+ *
+ * @author deniskovpaka
+ */
 public class HaulageTrainBuilder extends TrainBuilder {
     HaulageTrain train;
 
+    /**
+     * HaulageTrainBuilder constructor.
+     */
     public HaulageTrainBuilder() {
         super(TrainBuilder.HAULAGE_CARRIAGE_PARAMETER_QUANTITY);
     }
@@ -24,6 +33,11 @@ public class HaulageTrainBuilder extends TrainBuilder {
         return train;
     }
 
+    /**
+     * Builds haulage train parameters by using String array.
+     * @param parameters haulage train attributes.
+     * @throws NumberFormatException in case of invalid parameter.
+     */
     @Override
     public void buildTrainParameters(String[] parameters) throws IllegalArgumentException {
         /**
@@ -82,6 +96,9 @@ public class HaulageTrainBuilder extends TrainBuilder {
         }
     }
 
+    /**
+     * Some specific private build methods for creation haulage train.
+     */
     private void buildCarriageCost(double carriageCost) {
         train.setCarriageCost(carriageCost);
     }

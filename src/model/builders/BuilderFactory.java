@@ -3,6 +3,12 @@ package model.builders;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * The BuilderFactory class is responsible
+ * for creation a specific train's builder.
+ *
+ * @author deniskovpaka
+ */
 public class BuilderFactory {
     final static Logger logger = Logger.getLogger(BuilderFactory.class.getName());
     /**

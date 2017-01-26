@@ -7,9 +7,18 @@ import model.characteristics.KindOfGoods;
 import model.train.FreightTrain;
 import model.train.Train;
 
+/**
+ * The FreightTrainBuilder class is responsible
+ * for creation a freight train's builder.
+ *
+ * @author deniskovpaka
+ */
 public class FreightTrainBuilder extends TrainBuilder {
     FreightTrain train;
 
+    /**
+     * FreightTrainBuilder constructor.
+     */
     public FreightTrainBuilder() {
         super(TrainBuilder.FREIGHT_CARRIAGE_PARAMETER_QUANTITY);
     }
@@ -24,6 +33,11 @@ public class FreightTrainBuilder extends TrainBuilder {
         return train;
     }
 
+    /**
+     * Builds freight train parameters by using String array.
+     * @param parameters freight train attributes.
+     * @throws NumberFormatException in case of invalid parameter.
+     */
     @Override
     public void buildTrainParameters(String[] parameters) throws IllegalArgumentException {
         /**

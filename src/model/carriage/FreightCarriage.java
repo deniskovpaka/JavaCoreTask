@@ -4,10 +4,17 @@ import model.characteristics.KindOfGoods;
 
 /**
  * This class represent the freight carriage.
+ *
+ * @author deniskovpaka
  */
 public class FreightCarriage extends Carriage {
     private KindOfGoods kindOfGoods;
 
+    /**
+     * FreightCarriage constructor.
+     * @param baggageCapacity
+     * @param kindOfGoods kind of goods in a carriage.
+     */
     public FreightCarriage(double baggageCapacity, KindOfGoods kindOfGoods) {
         super(baggageCapacity);
         this.kindOfGoods = kindOfGoods;
