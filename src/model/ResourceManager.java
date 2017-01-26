@@ -6,7 +6,7 @@ import io.input.DataReader;
 import io.output.DataSaver;
 import model.builders.BuilderFactory;
 import model.builders.TrainBuilder;
-import model.train.Train;
+import model.trains.Train;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

@@ -1,21 +1,10 @@
 package io.output;
 
-import model.train.Train;
+import model.trains.Train;
 
 import java.io.IOException;
 
-/**
- * The DataSaver class is responsible
- * for saving data to file.
- *
- * @author deniskovpaka
- */
 public interface DataSaver {
-    /**
-     * Save train parameters into file.
-     * @param train
-     * @throws IOException in case of exception during
-     * saving data into file.
-     */
+    // String DATA_SAVER_PATH = "src\\io\\output\\outputdata\\"; // TODO It would be wonderful to set this in Config.file
     void saveDataToFile(Train train) throws IOException;
 }

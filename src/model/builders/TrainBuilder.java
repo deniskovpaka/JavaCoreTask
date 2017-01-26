@@ -1,7 +1,7 @@
 package model.builders;
 
 import model.characteristics.EngineType;
-import model.train.Train;
+import model.trains.Train;
 
 /**
  * The TrainBuilder class is responsible

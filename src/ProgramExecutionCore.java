@@ -1,12 +1,9 @@
-import algorithms.Calculation;
-import algorithms.CarriageComparators;
-import algorithms.Context;
-import model.carriage.Carriage;
-import model.carriage.PassengerCarriage;
+import model.carriages.Carriage;
+import model.carriages.PassengerCarriage;
 import model.characteristics.ComfortLevel;
 import model.characteristics.EngineType;
-import model.train.PassengerTrain;
-import model.train.Train;
+import model.trains.PassengerTrain;
+import model.trains.Train;
 
 import static io.FilePaths.DATA_READER_PATH;
 import static io.FilePaths.DATA_SAVER_PATH;

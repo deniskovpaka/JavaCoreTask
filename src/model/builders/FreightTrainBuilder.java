@@ -1,11 +1,11 @@
 package model.builders;
 
-import model.carriage.Carriage;
-import model.carriage.FreightCarriage;
+import model.carriages.Carriage;
+import model.carriages.FreightCarriage;
 import model.characteristics.EngineType;
 import model.characteristics.KindOfGoods;
-import model.train.FreightTrain;
-import model.train.Train;
+import model.trains.FreightTrain;
+import model.trains.Train;
 
 /**
  * The FreightTrainBuilder class is responsible

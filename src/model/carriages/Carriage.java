@@ -1,4 +1,4 @@
-package model.carriage;
+package model.carriages;
 
 import model.characteristics.ComfortLevel;
 

@@ -1,11 +1,11 @@
 package model.builders;
 
-import model.carriage.Carriage;
-import model.carriage.HaulageCarriage;
+import model.carriages.Carriage;
+import model.carriages.HaulageCarriage;
 import model.characteristics.ComfortLevel;
 import model.characteristics.EngineType;
-import model.train.HaulageTrain;
-import model.train.Train;
+import model.trains.HaulageTrain;
+import model.trains.Train;
 
 /**
  * The HaulageTrainBuilder class is responsible

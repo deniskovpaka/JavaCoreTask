@@ -1,7 +1,7 @@
 package algorithms;
 
-import model.carriage.Carriage;
-import model.carriage.PassengerCarriage;
+import model.carriages.Carriage;
+import model.carriages.PassengerCarriage;
 
 import java.util.List;
 import java.util.function.Function;

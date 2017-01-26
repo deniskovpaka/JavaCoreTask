@@ -1,7 +1,7 @@
 package algorithms;
 
-import model.carriage.Carriage;
-import model.train.Train;
+import model.carriages.Carriage;
+import model.trains.Train;
 
 import java.util.Comparator;
 import java.util.LinkedList;

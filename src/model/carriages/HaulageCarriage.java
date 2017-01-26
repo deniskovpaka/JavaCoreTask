@@ -1,4 +1,4 @@
-package model.carriage;
+package model.carriages;
 
 /**
  * HaulageCarriage class represent the haulage carriage.

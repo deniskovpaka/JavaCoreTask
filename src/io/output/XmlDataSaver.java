@@ -1,8 +1,8 @@
 package io.output;
 
 import io.XmlReadWriteFactory;
-import model.carriage.Carriage;
-import model.train.Train;
+import model.carriages.Carriage;
+import model.trains.Train;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 

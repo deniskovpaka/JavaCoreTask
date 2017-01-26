@@ -1,7 +1,7 @@
-package model.train;
+package model.trains;
 
 import model.characteristics.EngineType;
-import model.carriage.Carriage;
+import model.carriages.Carriage;
 
 import java.util.LinkedList;
 import java.util.List;

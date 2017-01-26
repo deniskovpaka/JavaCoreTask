@@ -1,15 +1,15 @@
 package model.builders;
 
-import model.carriage.Carriage;
-import model.carriage.PassengerCarriage;
+import model.carriages.Carriage;
+import model.carriages.PassengerCarriage;
 import model.characteristics.ComfortLevel;
 import model.characteristics.EngineType;
-import model.train.PassengerTrain;
-import model.train.Train;
+import model.trains.PassengerTrain;
+import model.trains.Train;
 
 /**
  * The PassengerTrainBuilder class is responsible
- * for creation a passenger train's builder.
+ * for creation a passenger train's builder.g
  *
  * @author deniskovpaka
  */
