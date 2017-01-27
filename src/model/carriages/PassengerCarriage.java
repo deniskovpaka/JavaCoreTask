@@ -29,8 +29,8 @@ public class PassengerCarriage extends Carriage {
 
     @Override
     public String toString() {
-        return "PassengerCarriage: " +
-                ", numberOfPassengers = " + numberOfPassengers + "\r\n"
+        return "PassengerCarriage: "
+                + "numberOfPassengers = " + numberOfPassengers
                 + super.toString();
     }
 

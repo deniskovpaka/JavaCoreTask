@@ -5,10 +5,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 import static io.FilePaths.DATA_READER_PATH;
 
@@ -43,6 +40,9 @@ public class TxtDataReader implements DataReader {
         try (Scanner scanner = new Scanner(filePath, ENCODING.name())) {
             while (scanner.hasNextLine()) {
                 String[] parameters = scanner.nextLine().split(",");
+                List<String> temp = new ArrayList<>(Arrays.asList(parameters));
+                temp.forEach(e -> { temp.set(temp.indexOf(e), e.trim()); });
+                parameters = temp.toArray(new String[temp.size()]);
                 initialParameters.addAll(Arrays.asList(parameters));
             }
         }

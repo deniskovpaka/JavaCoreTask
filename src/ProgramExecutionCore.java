@@ -49,6 +49,7 @@ public class ProgramExecutionCore {
                                                             UPPER_INPUT_SORT_MENU);
                             context.setSortingComparator(CarriageComparators.produceComparator(sortInput),
                                                         train);
+                            menu.showData(context.executeSorting());
                             break;
                         case 2:
                             menu.showCalculationMenu();
@@ -56,7 +57,7 @@ public class ProgramExecutionCore {
                                                                 UPPER_INPUT_CALCULATION_MENU);
                             context.setCalculationFunction(Calculation.produceCalculation(calculateInput),
                                                             train);
-                            context.executeCalculation();
+                            menu.showData(context.executeCalculation());
                             break;
                         case 3:
                             menu.showFindMenu(); // TODO Ploblem with additional data setting

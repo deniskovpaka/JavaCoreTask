@@ -52,8 +52,8 @@ public abstract class Carriage {
 
     @Override
     public String toString() {
-        return "comfortLevel = " + comfortLevel + "\r\n" +
-               "baggageCapacity = " + baggageCapacity + "\r\n";
+        return " comfortLevel = " + comfortLevel +
+               " baggageCapacity = " + baggageCapacity;
     }
 
     /**
@@ -78,9 +78,9 @@ public abstract class Carriage {
      * @return certain enum parameter.
      */
     public static <E extends Enum<E>>
-    E convertString(Class<E> clazz, String str){
-        for(E en : EnumSet.allOf(clazz)){
-            if(en.toString().equals(str.toUpperCase())){
+    E convertString(Class<E> clazz, String str) {
+        for (E en : EnumSet.allOf(clazz)) {
+            if (en.toString().equals(str.toUpperCase())) {
                 return en;
             }
         }

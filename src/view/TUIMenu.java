@@ -59,4 +59,12 @@ public class TUIMenu implements UIMenu {
     public void showExitMenu() {
         System.out.println("Thank you for the attention!!!");
     }
+
+    /**
+     * Show data.
+     */
+    public void showData(Object obj) {
+        String out = obj.toString();
+        System.out.println(out);
+    }
 }

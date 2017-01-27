@@ -31,8 +31,7 @@ public class TxtDataSaver implements DataSaver {
      */
     public TxtDataSaver(String outputFileName) {
         filePath = Paths.get(DATA_SAVER_PATH
-                            + DataSaver.createUniqueString()
-                            + outputFileName);
+                            + /**DataSaver.createUniqueString()*/ outputFileName); // TODO
     }
 
     /**
@@ -43,7 +42,7 @@ public class TxtDataSaver implements DataSaver {
      */
     @Override
     public void saveDataToFile(Train train) throws IOException {
-        String trainParameters = train.toString();
+        String trainParameters = train.getTrainParameters();
         try (BufferedWriter writer = Files.newBufferedWriter(filePath, ENCODING)) {
             for (String line : trainParameters.split(",")) {
                 writer.write(line);

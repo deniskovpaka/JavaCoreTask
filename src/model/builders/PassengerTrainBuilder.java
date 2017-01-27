@@ -48,7 +48,7 @@ public class PassengerTrainBuilder extends TrainBuilder {
         checkInputParametersSize(TrainBuilder.PASSENGER_TRAIN_PARAMETER_QUANTITY,
                                 parameters);
 
-        int parameterPosition = 0;
+        int parameterPosition = 1;
 
         // EngineType value parsing.
         EngineType engineType = Carriage.convertString(EngineType.class,
@@ -66,10 +66,10 @@ public class PassengerTrainBuilder extends TrainBuilder {
         if (areParametersExistForCarriagesCreation(TrainBuilder.PASSENGER_TRAIN_PARAMETER_QUANTITY,
                                                     parameters)) {
             // CarriagesQuantity value parsing.
-            int carriagesQuantity = Integer.parseInt(parameters[parameterPosition++]);
+            int carriagesQuantity = Integer.parseInt(parameters[parameterPosition]);
 
             // Passenger carriage values parsing.
-            while (parameterPosition < parameters.length) {
+            while (parameterPosition < parameters.length - 1 /*remove train name*/) {
                 // ComfortLevel value parsing.
                 ComfortLevel comfortLevel = Carriage.convertString(ComfortLevel.class,
                                             parameters[parameterPosition + 1]);

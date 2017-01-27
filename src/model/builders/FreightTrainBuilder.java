@@ -48,7 +48,7 @@ public class FreightTrainBuilder extends TrainBuilder {
         checkInputParametersSize(TrainBuilder.FREIGHT_TRAIN_PARAMETER_QUANTITY,
                                 parameters);
 
-        int parameterPosition = 0;
+        int parameterPosition = 1;
 
         // EngineType value parsing.
         EngineType engineType = Carriage.convertString(EngineType.class,
@@ -62,10 +62,10 @@ public class FreightTrainBuilder extends TrainBuilder {
         if (areParametersExistForCarriagesCreation(TrainBuilder.FREIGHT_TRAIN_PARAMETER_QUANTITY,
                                                     parameters)) {
             // CarriagesQuantity value parsing.
-            int carriagesQuantity = Integer.parseInt(parameters[parameterPosition++]);
+            int carriagesQuantity = Integer.parseInt(parameters[parameterPosition]);
 
             // Freight carriage values parsing.
-            while (parameterPosition < parameters.length) {
+            while (parameterPosition < parameters.length - 1 /*remove train name*/) {
                 // BaggageCapacity value parsing.
                 double baggageCapacity = Double.parseDouble(parameters[parameterPosition + 1]);
 

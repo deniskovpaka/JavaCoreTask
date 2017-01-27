@@ -19,9 +19,9 @@ public abstract class Train {
     /**
      * Train names.
      */
-    public static final String FREIGHT_TRAIN_NAME =     "FREIGHT_TRAIN";
-    public static final String HAULAGE_TRAIN_NAME =     "HAULAGE_TRAIN";
-    public static final String PASSENGER_TRAIN_NAME =   "PASSENGER_TRAIN";
+    public static final String FREIGHT_TRAIN_NAME =     "Freight";
+    public static final String HAULAGE_TRAIN_NAME =     "Haulage";
+    public static final String PASSENGER_TRAIN_NAME =   "Passenger";
 
     /**
      * Store specific kinds of carriages.

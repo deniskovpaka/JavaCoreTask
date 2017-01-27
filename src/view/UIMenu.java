@@ -56,4 +56,9 @@ public interface UIMenu {
      * is finished.
      */
     void showExitMenu();
+
+    /**
+     * Show data.
+     */
+    void showData(Object obj);
 }

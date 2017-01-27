@@ -58,13 +58,13 @@ public class Calculation {
      * Note: This method may throws ArrayStoreException if
      * there are different types of carriages.
      */
-    public static double calculate(List<Carriage> carriages,
+    public static Double calculate(List<Carriage> carriages,
                                    Function function) {
         double sum = 0.0;
         Carriage.areUniformCarriages(carriages);
 
         for (Carriage carriage: carriages) {
-            sum += (double)(function.apply(carriage)); // TODO need remove double cast
+            sum += (double)(function.apply(carriage));
         }
         return sum;
     }
