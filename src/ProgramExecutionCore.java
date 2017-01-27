@@ -1,5 +1,7 @@
 import algorithms.*;
 import model.ResourceManager;
+import model.carriages.Carriage;
+import model.characteristics.ComfortLevel;
 import model.trains.Train;
 import view.TUIMenu;
 import view.UIMenu;
@@ -57,12 +59,15 @@ public class ProgramExecutionCore {
                             menu.showData(context.executeCalculation());
                             break;
                         case 3:
-                            menu.showFindMenu(); // TODO Ploblem with additional data setting
-//                            int findInput = parseUserInput(LOWER_INPUT_FIND_MENU,
-//                                                            UPPER_INPUT_FIND_MENU);
-//                            context.setFinderPredicate(AlgorithmProducer.producePredicate(findInput),
-//                                                        train);
-//                            context.executeFinding();
+                            menu.showFindMenu();
+                            int subMenuIndex = parseUserInput(LOWER_INPUT_FIND_MENU,
+                                                            UPPER_INPUT_FIND_MENU);
+                            menu.showSubFindMenu(subMenuIndex);
+                            int predicateValue = parseUserInput(0/**LOWER BOUNDARY VALUE*/,
+                                    SUB_FIND_MENU_BOUNDARY_VALUES[subMenuIndex]/**UPPER BOUNDARY VALUE*/);
+                            context.setFinderPredicate(AlgorithmProducer.producePredicate(subMenuIndex,
+                                                        predicateValue), train);
+                            context.executeFinding();
                             break;
                         case 4:
                             resourceManager.saveTrainToFile(fileNameWithTrainParameters, train);

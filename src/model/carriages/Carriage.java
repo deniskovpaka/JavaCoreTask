@@ -88,6 +88,24 @@ public abstract class Carriage {
     }
 
     /**
+     * This method implements the common algorithm in order to
+     * get specific enum value from int value.
+     * @param clazz carriage enum.
+     * @param val carriage enum as int.
+     * @param <E>
+     * @return certain enum parameter.
+     */
+    public static <E extends Enum<E>>
+    E convertInt(Class<E> clazz, int val) {
+        for (E en : EnumSet.allOf(clazz)) {
+            if (en.ordinal() == val) {
+                return en;
+            }
+        }
+        return null;
+    }
+
+    /**
      * This method checks that carriages should be uniform
      * in order to execute one an algorithm on them.
      * @param carriages carriages array.

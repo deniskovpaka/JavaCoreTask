@@ -97,7 +97,7 @@ public abstract class Train {
     /**
      * This is a specific method that uses by saver's
      * class.
-     * @return
+     * @return carriages parameters as string.
      */
     protected String getCarriagesParameters() {
         StringBuilder carriagesParameters = new StringBuilder();

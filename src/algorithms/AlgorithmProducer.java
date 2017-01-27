@@ -1,5 +1,8 @@
 package algorithms;
 
+import model.carriages.Carriage;
+import model.characteristics.ComfortLevel;
+
 import java.util.Comparator;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -17,12 +20,13 @@ public class AlgorithmProducer {
      * @param predicateType
      * @return specific comparator.
      */
-    public static Predicate producePredicate(int predicateType) { // TODO Ploblem with additional data setting
+    public static Predicate producePredicate(int predicateType, int predicateValue) {
         Predicate predicate = null;
         if (predicateType == CarriagePredicates.COMFORT_LEVEL_PREDICATE_ID) {
-            // predicate = new ComfortLevelFilter();
+             predicate = new CarriagePredicates.
+                     ComfortLevelFilter(Carriage.convertInt(ComfortLevel.class, predicateValue));
         } else if (predicateType == CarriagePredicates.PASSENGER_PREDICATE_ID) {
-            // predicate = new PassengersFilter();
+             predicate = new CarriagePredicates.PassengersFilter(predicateValue);
         }
         return predicate;
     }

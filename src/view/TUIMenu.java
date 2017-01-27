@@ -1,5 +1,7 @@
 package view;
 
+import algorithms.CarriagePredicates;
+
 /**
  * The TUIMenu class represents
  * common user interface menu items
@@ -49,6 +51,42 @@ public class TUIMenu implements UIMenu {
         System.out.println("Would you like to find/filtered out by:");
         System.out.println("1. Carriage comfort level");
         System.out.println("2. Passengers in train");
+    }
+
+    /**
+     * Show sub find menu.
+     * It is quite close related with
+     * showFindMenu function.
+     */
+    @Override
+    public void showSubFindMenu(int subMenuIndex) {
+        if (subMenuIndex == CarriagePredicates.COMFORT_LEVEL_PREDICATE_ID) {
+            showSubFindMenuByComfortLevel();
+        } else if (subMenuIndex == CarriagePredicates.PASSENGER_PREDICATE_ID) {
+            showSubFindMenuByPassengerNumber();
+        }
+    }
+
+    /**
+     * Show comfort level menu via text in console.
+     */
+    @Override
+    public void showSubFindMenuByComfortLevel() {
+        System.out.println("Please, select the comfort level:");
+        System.out.println("0. STANDART");
+        System.out.println("1. COMFORT");
+        System.out.println("2. LUXURY");
+        System.out.println("3. VIP");
+    }
+
+    /**
+     * Show passenger finding menu via text in console.
+     */
+    @Override
+    public void showSubFindMenuByPassengerNumber() {
+        System.out.println("Please, passenger quantity.");
+        System.out.println("Note: the value must be lower than"
+                + SUB_FIND_MENU_BOUNDARY_VALUES[1]/**MAX PASSENGER QUANTITY*/);
     }
 
     /**
