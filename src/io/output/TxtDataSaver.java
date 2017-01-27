@@ -19,7 +19,7 @@ import static io.FilePaths.DATA_SAVER_PATH;
  *
  * @author deniskovpaka
  */
-public class TxtDataSaver implements DataSaver {
+public class TxtDataSaver extends DataSaver {
     private final Path filePath;
     final static Charset ENCODING = StandardCharsets.UTF_8;
 
@@ -31,7 +31,9 @@ public class TxtDataSaver implements DataSaver {
      */
     public TxtDataSaver(String outputFileName) {
         filePath = Paths.get(DATA_SAVER_PATH
-                            + /**DataSaver.createUniqueString()*/ outputFileName); // TODO
+                            + DataSaver.createUniqueString()
+                            + "_"
+                            + outputFileName);
     }
 
     /**

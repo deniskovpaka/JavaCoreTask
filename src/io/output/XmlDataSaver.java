@@ -27,7 +27,7 @@ import static io.FilePaths.DATA_SAVER_PATH;
  *
  * @author deniskovpaka
  */
-public class XmlDataSaver implements DataSaver {
+public class XmlDataSaver extends DataSaver {
     private String outputFileName;
 
     /**
@@ -38,7 +38,8 @@ public class XmlDataSaver implements DataSaver {
      */
     public XmlDataSaver(String outputFileName) {
         this.outputFileName = DATA_SAVER_PATH
-                            /**+ DataSaver.createUniqueString() */
+                            + DataSaver.createUniqueString()
+                            + "_"
                             + outputFileName;
     }
 
