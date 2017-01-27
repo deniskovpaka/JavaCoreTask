@@ -1,15 +1,13 @@
 import algorithms.Calculation;
+import algorithms.CarriageComparators;
 import algorithms.CarriagePredicates;
 import algorithms.Context;
-import io.output.DataSaver;
 import model.ResourceManager;
 import model.trains.Train;
 import view.TUIMenu;
 import view.UIMenu;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Scanner;
 
 import static view.UIMenu.*;
@@ -49,6 +47,8 @@ public class ProgramExecutionCore {
                             menu.showSortMenu();
                             int sortInput = parseUserInput(LOWER_INPUT_SORT_MENU,
                                                             UPPER_INPUT_SORT_MENU);
+                            context.setSortingComparator(CarriageComparators.produceComparator(sortInput),
+                                                        train);
                             break;
                         case 2:
                             menu.showCalculationMenu();
@@ -59,12 +59,12 @@ public class ProgramExecutionCore {
                             context.executeCalculation();
                             break;
                         case 3:
-                            menu.showFindMenu();
-                            int findInput = parseUserInput(LOWER_INPUT_FIND_MENU,
-                                                            UPPER_INPUT_FIND_MENU);
-                            context.setFinderPredicate(CarriagePredicates.producePredicate(findInput),
-                                                        train);
-                            context.executeFinding();
+                            menu.showFindMenu(); // TODO Ploblem with additional data setting
+//                            int findInput = parseUserInput(LOWER_INPUT_FIND_MENU,
+//                                                            UPPER_INPUT_FIND_MENU);
+//                            context.setFinderPredicate(CarriagePredicates.producePredicate(findInput),
+//                                                        train);
+//                            context.executeFinding();
                             break;
                         case 4:
                             resourceManager.saveTrainToFile(fileNameWithTrainParameters, train);

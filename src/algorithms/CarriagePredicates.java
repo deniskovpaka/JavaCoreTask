@@ -73,7 +73,7 @@ public class CarriagePredicates {
      * @param predicateType
      * @return specific comparator.
      */
-    public static Predicate producePredicate(int predicateType) { // TODO
+    public static Predicate producePredicate(int predicateType) { // TODO Ploblem with additional data setting
         Predicate predicate = null;
         if (predicateType == COMFORT_LEVEL_PREDICATE_ID) {
             // predicate = new ComfortLevelFilter();
