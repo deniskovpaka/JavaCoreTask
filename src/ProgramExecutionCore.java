@@ -64,10 +64,10 @@ public class ProgramExecutionCore {
                                                             UPPER_INPUT_FIND_MENU);
                             menu.showSubFindMenu(subMenuIndex);
                             int predicateValue = parseUserInput(0/**LOWER BOUNDARY VALUE*/,
-                                    SUB_FIND_MENU_BOUNDARY_VALUES[subMenuIndex]/**UPPER BOUNDARY VALUE*/);
+                                    SUB_FIND_MENU_BOUNDARY_VALUES[subMenuIndex - 1]/**UPPER BOUNDARY VALUE*/);
                             context.setFinderPredicate(AlgorithmProducer.producePredicate(subMenuIndex,
                                                         predicateValue), train);
-                            context.executeFinding();
+                            menu.showData(context.executeFinding());
                             break;
                         case 4:
                             resourceManager.saveTrainToFile(fileNameWithTrainParameters, train);
