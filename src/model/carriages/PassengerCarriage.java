@@ -35,7 +35,7 @@ public class PassengerCarriage extends Carriage {
     }
 
     @Override
-    public String getCarriagesParameters() {
+    public String getCarriagesParameter() {
         return getComfortLevel()
                 + ", " + getBaggageCapacity()
                 + ", " + getNumberOfPassengers();

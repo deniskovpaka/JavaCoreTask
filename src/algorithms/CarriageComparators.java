@@ -58,20 +58,4 @@ public class CarriageComparators {
         Collections.sort(carriages, comparator);
         return carriages;
     }
-
-    /**
-     * Use produceComparator method to get
-     * object of type Function.
-     * @param comparatorType
-     * @return specific comparator.
-     */
-    public static Comparator produceComparator(int comparatorType) {
-        Comparator comparator = null;
-        if (comparatorType == PASSENGER_COMPARATOR_ID) {
-            comparator = new SortPassengersByAscendingOrder();
-        } else if (comparatorType == COMFORT_LEVEL_COMPARATOR_ID) {
-            comparator = new SortByComfortLevel();
-        }
-        return comparator;
-    }
 }

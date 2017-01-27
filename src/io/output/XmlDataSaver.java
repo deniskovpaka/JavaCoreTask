@@ -38,7 +38,7 @@ public class XmlDataSaver implements DataSaver {
      */
     public XmlDataSaver(String outputFileName) {
         this.outputFileName = DATA_SAVER_PATH
-                            + DataSaver.createUniqueString()
+                            /**+ DataSaver.createUniqueString() */
                             + outputFileName;
     }
 
@@ -50,7 +50,12 @@ public class XmlDataSaver implements DataSaver {
      */
     @Override
     public void saveDataToFile(Train train) throws IOException {
-        String trainParameters = train.getTrainParameters();
+        String[] parameters = train.getTrainParameters().split(",");
+        int trainParametersQuantity = train.getTrainParameterQuantity();
+        StringBuilder trainParameters = new StringBuilder();
+        for (int i = 0; i < trainParametersQuantity; i++) {
+            trainParameters.append(parameters[i]);
+        }
 
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db = null;
@@ -69,7 +74,7 @@ public class XmlDataSaver implements DataSaver {
         rootElement.appendChild(trainElement);
 
         Element trainParametersElement = doc.createElement(XmlReadWriteFactory.TRAINPARAMETERS_TAG);
-        trainParametersElement.appendChild(doc.createTextNode(trainParameters));
+        trainParametersElement.appendChild(doc.createTextNode(trainParameters.toString().trim()));
         trainElement.appendChild(trainParametersElement);
 
         Element carriagesElement = doc.createElement(XmlReadWriteFactory.CARRIAGES_TAG);
@@ -80,10 +85,12 @@ public class XmlDataSaver implements DataSaver {
         carriagesElement.appendChild(quantityElement);
 
         Element carriagesParametersElement = doc.createElement(XmlReadWriteFactory.CARRIAGEPARAMETERS_TAG);
-        StringBuilder carriagesParametersAsString = new StringBuilder();
-        for (Carriage carriage : train.getCarriagesCopy())
-            carriagesParametersAsString.append(carriage.getCarriagesParameters());
-        carriagesParametersElement.appendChild(doc.createTextNode(carriagesParametersAsString.toString()));
+        trainParametersQuantity++; /**skip carriages quantity*/
+        trainParameters = new StringBuilder();
+        for (int i = trainParametersQuantity; i < parameters.length; i++) {
+            trainParameters.append(parameters[i]);
+        }
+        carriagesParametersElement.appendChild(doc.createTextNode(trainParameters.toString().trim()));
         carriagesElement.appendChild(carriagesParametersElement);
 
         try {

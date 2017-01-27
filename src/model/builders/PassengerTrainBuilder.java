@@ -16,13 +16,6 @@ import model.trains.Train;
 public class PassengerTrainBuilder extends TrainBuilder {
     private PassengerTrain train;
 
-    /**
-     * PassengerTrainBuilder constructor.
-     */
-    public PassengerTrainBuilder() {
-        super(TrainBuilder.PASSENGER_CARRIAGE_PARAMETER_QUANTITY);
-    }
-
     @Override
     public void createTrain() {
         train = new PassengerTrain();
@@ -69,7 +62,7 @@ public class PassengerTrainBuilder extends TrainBuilder {
             int carriagesQuantity = Integer.parseInt(parameters[parameterPosition]);
 
             // Passenger carriage values parsing.
-            while (parameterPosition < parameters.length - 1 /*remove train name*/) {
+            while (parameterPosition < parameters.length - 1 /**remove train name*/) {
                 // ComfortLevel value parsing.
                 ComfortLevel comfortLevel = Carriage.convertString(ComfortLevel.class,
                                             parameters[parameterPosition + 1]);

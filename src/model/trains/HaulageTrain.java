@@ -1,5 +1,7 @@
 package model.trains;
 
+import model.builders.TrainBuilder;
+
 /**
  * HaulageTrain class represent the haulage train.
  *
@@ -36,6 +38,11 @@ public class HaulageTrain extends Train {
                 + ", " + getEngineType()
                 + ", " + getCarriageCost()
                 + ", " + isOnRepair()
-                + ", " + getCarriagesQuantity();
+                + ", " + getCarriagesParameters();
+    }
+
+    @Override
+    public int getTrainParameterQuantity() {
+        return TrainBuilder.HAULAGE_TRAIN_PARAMETER_QUANTITY;
     }
 }

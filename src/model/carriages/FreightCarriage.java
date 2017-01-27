@@ -36,7 +36,7 @@ public class FreightCarriage extends Carriage {
     }
 
     @Override
-    public String getCarriagesParameters() {
+    public String getCarriagesParameter() {
         return getBaggageCapacity()
                 + ", " + getKindOfGoods();
     }

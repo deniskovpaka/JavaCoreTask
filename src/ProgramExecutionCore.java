@@ -1,7 +1,4 @@
-import algorithms.Calculation;
-import algorithms.CarriageComparators;
-import algorithms.CarriagePredicates;
-import algorithms.Context;
+import algorithms.*;
 import model.ResourceManager;
 import model.trains.Train;
 import view.TUIMenu;
@@ -47,7 +44,7 @@ public class ProgramExecutionCore {
                             menu.showSortMenu();
                             int sortInput = parseUserInput(LOWER_INPUT_SORT_MENU,
                                                             UPPER_INPUT_SORT_MENU);
-                            context.setSortingComparator(CarriageComparators.produceComparator(sortInput),
+                            context.setSortingComparator(AlgorithmProducer.produceComparator(sortInput),
                                                         train);
                             menu.showData(context.executeSorting());
                             break;
@@ -55,7 +52,7 @@ public class ProgramExecutionCore {
                             menu.showCalculationMenu();
                             int calculateInput = parseUserInput(LOWER_INPUT_CALCULATION_MENU,
                                                                 UPPER_INPUT_CALCULATION_MENU);
-                            context.setCalculationFunction(Calculation.produceCalculation(calculateInput),
+                            context.setCalculationFunction(AlgorithmProducer.produceCalculation(calculateInput),
                                                             train);
                             menu.showData(context.executeCalculation());
                             break;
@@ -63,7 +60,7 @@ public class ProgramExecutionCore {
                             menu.showFindMenu(); // TODO Ploblem with additional data setting
 //                            int findInput = parseUserInput(LOWER_INPUT_FIND_MENU,
 //                                                            UPPER_INPUT_FIND_MENU);
-//                            context.setFinderPredicate(CarriagePredicates.producePredicate(findInput),
+//                            context.setFinderPredicate(AlgorithmProducer.producePredicate(findInput),
 //                                                        train);
 //                            context.executeFinding();
                             break;

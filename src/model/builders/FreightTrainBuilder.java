@@ -16,13 +16,6 @@ import model.trains.Train;
 public class FreightTrainBuilder extends TrainBuilder {
     FreightTrain train;
 
-    /**
-     * FreightTrainBuilder constructor.
-     */
-    public FreightTrainBuilder() {
-        super(TrainBuilder.FREIGHT_CARRIAGE_PARAMETER_QUANTITY);
-    }
-
     @Override
     public void createTrain() {
         train = new FreightTrain();
@@ -65,7 +58,7 @@ public class FreightTrainBuilder extends TrainBuilder {
             int carriagesQuantity = Integer.parseInt(parameters[parameterPosition]);
 
             // Freight carriage values parsing.
-            while (parameterPosition < parameters.length - 1 /*remove train name*/) {
+            while (parameterPosition < parameters.length - 1 /**remove train name*/) {
                 // BaggageCapacity value parsing.
                 double baggageCapacity = Double.parseDouble(parameters[parameterPosition + 1]);
 

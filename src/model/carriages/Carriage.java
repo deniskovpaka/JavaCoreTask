@@ -61,7 +61,7 @@ public abstract class Carriage {
      * As the viewer's classes will be used these parameters in
      * a different ways/modes.
      */
-    public abstract String getCarriagesParameters();
+    public abstract String getCarriagesParameter();
 
     /**
      * This method return specific carriage ID.

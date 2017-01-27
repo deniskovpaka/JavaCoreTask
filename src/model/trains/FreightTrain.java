@@ -1,5 +1,7 @@
 package model.trains;
 
+import model.builders.TrainBuilder;
+
 /**
  * The FreightTrain class represent freight train.
  *
@@ -15,6 +17,11 @@ public class FreightTrain extends Train {
     public String getTrainParameters() {
         return getTrainName()
                 + ", " + getEngineType()
-                + ", " + getCarriagesQuantity();
+                + ", " + getCarriagesParameters();
+    }
+
+    @Override
+    public int getTrainParameterQuantity() {
+        return TrainBuilder.FREIGHT_TRAIN_PARAMETER_QUANTITY;
     }
 }

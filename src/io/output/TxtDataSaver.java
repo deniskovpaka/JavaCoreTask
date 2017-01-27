@@ -46,7 +46,6 @@ public class TxtDataSaver implements DataSaver {
         try (BufferedWriter writer = Files.newBufferedWriter(filePath, ENCODING)) {
             for (String line : trainParameters.split(",")) {
                 writer.write(line);
-                writer.newLine();
             }
         }
     }

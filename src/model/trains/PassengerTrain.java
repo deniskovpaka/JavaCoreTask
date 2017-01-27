@@ -1,5 +1,7 @@
 package model.trains;
 
+import model.builders.TrainBuilder;
+
 /**
  * PassengerTrain class represent the passenger train.
  *
@@ -26,6 +28,11 @@ public class PassengerTrain extends Train {
         return getTrainName()
                 + ", " + getEngineType()
                 + ", " + getNumberOfAvailableSeats()
-                + ", " + getCarriagesQuantity();
+                + ", " + getCarriagesParameters();
+    }
+
+    @Override
+    public int getTrainParameterQuantity() {
+        return TrainBuilder.PASSENGER_TRAIN_PARAMETER_QUANTITY;
     }
 }

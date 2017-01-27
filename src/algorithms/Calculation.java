@@ -68,20 +68,4 @@ public class Calculation {
         }
         return sum;
     }
-
-    /**
-     * Use produceCalculation method to get
-     * object of type Function.
-     * @param calculationType
-     * @return specific function.
-     */
-    public static Function produceCalculation(int calculationType) {
-        Function function = null;
-        if (calculationType == BAGGAGE_CALCULATION_ID) {
-            function = new BaggageCalculator();
-        } else if (calculationType == PASSENGER_CALCULATION_ID) {
-            function = new PassengerCalculator();
-        }
-        return function;
-    }
 }

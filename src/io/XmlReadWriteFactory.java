@@ -15,7 +15,7 @@ public class XmlReadWriteFactory implements ReadWriteFactory {
     /**
      * Read/Write tags
      */
-    public static String CARRIAGEPARAMETERS_TAG     = "carriageparameters";
+    public static String CARRIAGEPARAMETERS_TAG     = "carriagesparameters";
     public static String CARRIAGES_TAG              = "carriages";
     public static String MODEL_TAG                  = "model";
     public static String QUANTITY_TAG               = "quantity";

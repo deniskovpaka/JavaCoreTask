@@ -92,4 +92,21 @@ public abstract class Train {
      */
     public abstract String getTrainName();
     public abstract String getTrainParameters();
+    public abstract int getTrainParameterQuantity();
+
+    /**
+     * This is a specific method that uses by saver's
+     * class.
+     * @return
+     */
+    protected String getCarriagesParameters() {
+        StringBuilder carriagesParameters = new StringBuilder();
+        if (getCarriagesQuantity() > 0) {
+            carriagesParameters.append(getCarriagesQuantity()).append(", ");
+            for (Carriage carriage : getCarriagesCopy())
+                carriagesParameters.append(carriage.getCarriagesParameter())
+                                    .append(", ");
+        }
+        return carriagesParameters.toString();
+    }
 }

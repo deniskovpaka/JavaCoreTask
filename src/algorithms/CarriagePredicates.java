@@ -66,20 +66,4 @@ public class CarriagePredicates {
         Carriage.areUniformCarriages(carriages);
         return carriages.stream().filter(carriage -> predicate.test(carriage)).collect(Collectors.toList());
     }
-
-    /**
-     * Use producePredicate method to get
-     * object of type Predicate.
-     * @param predicateType
-     * @return specific comparator.
-     */
-    public static Predicate producePredicate(int predicateType) { // TODO Ploblem with additional data setting
-        Predicate predicate = null;
-        if (predicateType == COMFORT_LEVEL_PREDICATE_ID) {
-            // predicate = new ComfortLevelFilter();
-        } else if (predicateType == PASSENGER_PREDICATE_ID) {
-            // predicate = new PassengersFilter();
-        }
-        return predicate;
-    }
 }

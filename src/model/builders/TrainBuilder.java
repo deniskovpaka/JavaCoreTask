@@ -28,15 +28,6 @@ public abstract class TrainBuilder {
     public static int FREIGHT_CARRIAGE_PARAMETER_QUANTITY = 2;
     public static int PASSENGER_CARRIAGE_PARAMETER_QUANTITY = 3;
     public static int HAULAGE_CARRIAGE_PARAMETER_QUANTITY = 3;
-    protected final int carriageParameterQuantity;
-
-    /**
-     * TrainBuilder constructor.
-     * @param carriageParameterQuantity carriage parameter quantity.
-     */
-    public TrainBuilder(int carriageParameterQuantity) {
-        this.carriageParameterQuantity = carriageParameterQuantity;
-    }
 
     /**
      * A template method for building specific train.
