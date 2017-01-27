@@ -50,4 +50,13 @@ public class TUIMenu implements UIMenu {
         System.out.println("1. Carriage comfort level");
         System.out.println("2. Passengers in train");
     }
+
+    /**
+     * Show exit menu when program execution
+     * is finished via text in console.
+     */
+    @Override
+    public void showExitMenu() {
+        System.out.println("Thank you for the attention!!!");
+    }
 }

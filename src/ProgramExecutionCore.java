@@ -1,25 +1,20 @@
+import algorithms.Calculation;
+import algorithms.CarriagePredicates;
 import algorithms.Context;
+import io.output.DataSaver;
 import model.ResourceManager;
 import model.trains.Train;
+import view.TUIMenu;
+import view.UIMenu;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Scanner;
 
+import static view.UIMenu.*;
+
 public class ProgramExecutionCore {
-    /**
-     * Input borders in main menu loop.
-     */
-    private static int LOWER_INPUT_MAIN_MENU = 1;
-    private static int UPPER_INPUT_MAIN_MENU = 5;
-
-    /**
-     * Input borders in sort menu.
-     */
-    private static int LOWER_INPUT_SORT_MENU = 1;
-    private static int UPPER_INPUT_SORT_MENU = 2;
-
     public static void main(String[] args) {
         /**
          * The args[0] argument should contain the name of
@@ -41,29 +36,42 @@ public class ProgramExecutionCore {
                 boolean isProgramExecutes = true;
                 int userInput;
                 Context context = new Context();
+                UIMenu menu = new TUIMenu();
                 while (isProgramExecutes) {
                     /**
                      * Show interface menu.
                      */
-                    showInterfaceMenu();
+                    menu.showUserInterfaceMenu();
                     userInput = parseUserInput(LOWER_INPUT_MAIN_MENU,
                                                 UPPER_INPUT_MAIN_MENU);
                     switch (userInput) {
                         case 1:
-                            showSortMenu();
+                            menu.showSortMenu();
                             int sortInput = parseUserInput(LOWER_INPUT_SORT_MENU,
                                                             UPPER_INPUT_SORT_MENU);
                             break;
                         case 2:
+                            menu.showCalculationMenu();
+                            int calculateInput = parseUserInput(LOWER_INPUT_CALCULATION_MENU,
+                                                                UPPER_INPUT_CALCULATION_MENU);
+                            context.setCalculationFunction(Calculation.produceCalculation(calculateInput),
+                                                            train);
+                            context.executeCalculation();
                             break;
                         case 3:
+                            menu.showFindMenu();
+                            int findInput = parseUserInput(LOWER_INPUT_FIND_MENU,
+                                                            UPPER_INPUT_FIND_MENU);
+                            context.setFinderPredicate(CarriagePredicates.producePredicate(findInput),
+                                                        train);
+                            context.executeFinding();
                             break;
                         case 4:
-                            resourceManager.saveTrainToFile(createUniqueString()
-                                    + fileNameWithTrainParameters, train);
+                            resourceManager.saveTrainToFile(fileNameWithTrainParameters, train);
                             break;
                         case 5:
                             isProgramExecutes = false;
+                            menu.showExitMenu();
                             break;
                     }
                 }
@@ -71,68 +79,8 @@ public class ProgramExecutionCore {
                 e.printStackTrace();
             }
 
-
-//            // TODO This execution method will be completely reworked later
-//            Train train = new PassengerTrain();
-//            train.setEngineType(EngineType.COAL);
-//            train.addCarrage(new PassengerCarriage(ComfortLevel.COMFORT, 5.0));
-//            train.addCarrage(new PassengerCarriage(ComfortLevel.LUXURY, 10.0));
-//            train.addCarrage(new PassengerCarriage(ComfortLevel.LUXURY, 10.0));
-//            train.addCarrage(new PassengerCarriage(ComfortLevel.STANDART, 20.0));
-//            train.addCarrage(new PassengerCarriage(ComfortLevel.LUXURY, 30.0));
-//            train.addCarrage(new PassengerCarriage(ComfortLevel.LUXURY, 30.0));
-//
-//            int passengers = 10;
-//            for (Carriage passengerCarriage : train.getCarriagesCopy()) {
-//                passengers += passengers;
-//                ((PassengerCarriage) passengerCarriage).setNumberOfPassengers(passengers);
-//            }
-//        System.out.println("Passengers=" + passengers);
-//        System.out.println("------BEFORE------");
-//        System.out.println(train.getCarriagesCopy());
-//
-//        System.out.println("------AFTER------");
-//        Context context = new Context();
-//        context.setComparator(new CarriageComparators.SortPassengersByAscendingOrder());
-//
-//        System.out.println(CarriageComparators.sortingCarriages(train.getCarriagesCopy(),
-//                context.getComparator()));
-//        System.out.println("------AFTER2------");
-//        Calculation calculation = new Calculation(new Calculation.PassengerCalculator());
-//        System.out.println(Calculation.calculate(train.getCarriagesCopy(),
-//                calculation.getFunction()));
-//        System.out.println("------AFTER3------");
-//        System.out.println(Calculation.calculate(train.getCarriagesCopy(),
-//                new Calculation.BaggageCalculator()));
-//        TxtDataReader reader = new TxtDataReader(DATA_READER_PATH + "PassengerTrain.txt");
-//        TxtDataSaver saver = new TxtDataSaver(DATA_SAVER_PATH + "PassengerTrainOut.txt");
-//        XmlDataReader reader = new XmlDataReader(DATA_READER_PATH + "PassengerTrain.xml");
-            // XmlDataSaver saver = new XmlDataSaver(DATA_SAVER_PATH + "PassengerTrainOut.xml");
-            //saver.saveDataToFile(train);
-            //saver.saveDataToFile(train);
-//        String[] str = reader.readInitialParameters();
-//        for (String s : str)
-//            System.out.println(s);
-//            System.out.println(DATA_SAVER_PATH);
-//            System.out.println(DATA_READER_PATH);
-            // TODO This execution method will be completely reworked later
         }
     }
-
-//    private static void showInterfaceMenu() {
-//        System.out.println("What would you like to do with train:");
-//        System.out.println("1. Sort by specific parameter in carriages");
-//        System.out.println("2. Calculate by specific parameter in carriages");
-//        System.out.println("3. Find/Filtered Out by specific parameter in carriages");
-//        System.out.println("4. Save train to file");
-//        System.out.println("5. Exit from program");
-//    }
-//
-//    private static void showSortMenu() {
-//        System.out.println("Would you like to sort by:");
-//        System.out.println("1. Passenger number");
-//        System.out.println("2. Comfort level");
-//    }
 
     private static int parseUserInput(int lowerInput, int upperInput) {
         Scanner scanner = new Scanner(System.in);
@@ -150,11 +98,5 @@ public class ProgramExecutionCore {
         } while (input < lowerInput || input > upperInput);
         System.out.println("The client input is " + input);
         return input;
-    }
-
-    private static String createUniqueString() {
-        Calendar cal = Calendar.getInstance();
-        return new SimpleDateFormat("EEEE, dd/MM/yyyy/hh:mm:ss")
-                                    .format(cal.getTime());
     }
 }

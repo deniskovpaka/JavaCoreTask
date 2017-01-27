@@ -3,6 +3,7 @@ package algorithms;
 import model.carriages.Carriage;
 import model.carriages.PassengerCarriage;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.function.Function;
 
@@ -14,6 +15,12 @@ import java.util.function.Function;
  * @author deniskovpaka
  */
 public class Calculation {
+    /**
+     * Calculation ID's.
+     */
+    public static final int BAGGAGE_CALCULATION_ID = 1;
+    public static final int PASSENGER_CALCULATION_ID = 2;
+
     private Function function;
     public Calculation(Function function) {
         this.function = function;
@@ -60,5 +67,21 @@ public class Calculation {
             sum += (double)(function.apply(carriage)); // TODO need remove double cast
         }
         return sum;
+    }
+
+    /**
+     * Use produceCalculation method to get
+     * object of type Function.
+     * @param calculationType
+     * @return specific function.
+     */
+    public static Function produceCalculation(int calculationType) {
+        Function function = null;
+        if (calculationType == BAGGAGE_CALCULATION_ID) {
+            function = new BaggageCalculator();
+        } else if (calculationType == PASSENGER_CALCULATION_ID) {
+            function = new PassengerCalculator();
+        }
+        return function;
     }
 }

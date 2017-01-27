@@ -20,7 +20,7 @@ import java.io.IOException;
 import static io.FilePaths.DATA_SAVER_PATH;
 
 /**
- * The TxtDataSaver class is responsible
+ * The XmlDataSaver class is responsible
  * for saving data to file in XML format.
  * XML format is described in *DataInputFormat.txt*
  * file.
@@ -30,8 +30,16 @@ import static io.FilePaths.DATA_SAVER_PATH;
 public class XmlDataSaver implements DataSaver {
     private String outputFileName;
 
+    /**
+     * XmlDataSaver constructor.
+     * @param outputFileName a file that will be created.
+     * Note: The outputFileName will be also contains
+     * the SimpleDataFormat.
+     */
     public XmlDataSaver(String outputFileName) {
-        this.outputFileName = DATA_SAVER_PATH + outputFileName;
+        this.outputFileName = DATA_SAVER_PATH
+                            + DataSaver.createUniqueString()
+                            + outputFileName;
     }
 
     /**
