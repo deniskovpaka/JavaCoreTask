@@ -23,8 +23,11 @@ public class AlgorithmProducer {
     public static Predicate producePredicate(int predicateType, int predicateValue) {
         Predicate predicate = null;
         if (predicateType == CarriagePredicates.COMFORT_LEVEL_PREDICATE_ID) {
-             predicate = new CarriagePredicates.
-                     ComfortLevelFilter(Carriage.convertInt(ComfortLevel.class, predicateValue));
+            ComfortLevel comfortLevel = Carriage.convertInt(ComfortLevel.class,
+                                                            predicateValue);
+            /**Set default value if comfortLevel is NULL*/
+            if (comfortLevel == null) comfortLevel = ComfortLevel.NONE;
+            predicate = new CarriagePredicates.ComfortLevelFilter(comfortLevel);
         } else if (predicateType == CarriagePredicates.PASSENGER_PREDICATE_ID) {
              predicate = new CarriagePredicates.PassengersFilter(predicateValue);
         }

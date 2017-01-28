@@ -81,7 +81,7 @@ public abstract class Train {
     public String toString() {
         return getTrainName() +
                 ", engineType = " + engineType +
-                "carriages = {\n" + carriages +
+                " carriages = {\n" + carriages +
                 '}';
     }
 
