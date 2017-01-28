@@ -1,7 +1,5 @@
 import algorithms.*;
 import model.ResourceManager;
-import model.carriages.Carriage;
-import model.characteristics.ComfortLevel;
 import model.trains.Train;
 import view.TUIMenu;
 import view.UIMenu;
@@ -99,7 +97,7 @@ public class ProgramExecutionCore {
                 input = 0;
             }
         } while (input < lowerInput || input > upperInput);
-        System.out.println("The client input is " + input);
+        System.out.println("The client input is " + input + "\r\n");
         return input;
     }
 }

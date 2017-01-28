@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<model>
+	<train>
+		<trainparameters>Passenger ELECTRO 5</trainparameters>
+	</train>
+	<carriages>
+		<quantity>5</quantity>
+		<carriagesparameters>VIP 50.0 25 LUXURY 70.0 35 COMFORT 22.0 32 VIP 33.3 10 STANDARD 11.1 11</carriagesparameters>
+	</carriages>
+</model>

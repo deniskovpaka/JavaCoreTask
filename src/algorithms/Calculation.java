@@ -25,9 +25,7 @@ public class Calculation {
     public Calculation(Function function) {
         this.function = function;
     }
-    public Function getFunction() {
-        return function;
-    }
+
     /**
      * The BaggageCalculator class calculates baggage capacity
      * in all carriages.

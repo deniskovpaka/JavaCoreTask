@@ -6,7 +6,7 @@ package model.characteristics;
  * @author deniskovpaka
  */
 public enum ComfortLevel {
-    STANDART,
+    STANDARD,
     COMFORT,
     LUXURY,
     VIP,

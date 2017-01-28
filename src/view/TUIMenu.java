@@ -73,7 +73,7 @@ public class TUIMenu implements UIMenu {
     @Override
     public void showSubFindMenuByComfortLevel() {
         System.out.println("Please, select the comfort level:");
-        System.out.println("0. STANDART");
+        System.out.println("0. STANDARD");
         System.out.println("1. COMFORT");
         System.out.println("2. LUXURY");
         System.out.println("3. VIP");
@@ -84,7 +84,7 @@ public class TUIMenu implements UIMenu {
      */
     @Override
     public void showSubFindMenuByPassengerNumber() {
-        System.out.println("Please, passenger quantity.");
+        System.out.println("Please, input the passenger quantity.");
         System.out.println("Note: the value must be lower than"
                 + SUB_FIND_MENU_BOUNDARY_VALUES[1]/**MAX PASSENGER QUANTITY*/);
     }
@@ -102,7 +102,6 @@ public class TUIMenu implements UIMenu {
      * Show data.
      */
     public void showData(Object obj) {
-        String out = obj.toString();
-        System.out.println(out);
+        System.out.println(obj.toString() + "\r\n");
     }
 }
